@@ -2,7 +2,7 @@
  * @Author: dylanlawless
  * @Date:   2020-01-15T09:52:42+00:00
  * @Last modified by:   dylanlawless
- * @Last modified time: 2020-03-25T12:08:17+00:00
+ * @Last modified time: 2020-03-25T22:31:47+00:00
  */
  import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -119,7 +119,7 @@ class App extends React.Component{
         componentDidMount(){
             const loggedIn = this.state.loggedIn;
             if(loggedIn === true){
-                axios.get('http://localhost:5000/user/' + this.state.user._id)
+                axios.get(process.env.REACT_APP_BACKEND + '/user/' + this.state.user._id)
                 .then(response => {
 
 

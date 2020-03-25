@@ -2,7 +2,7 @@
  * @Author: dylanlawless
  * @Date:   2020-01-16T09:51:11+00:00
  * @Last modified by:   dylanlawless
- * @Last modified time: 2020-03-25T16:33:07+00:00
+ * @Last modified time: 2020-03-25T22:31:14+00:00
  */
  import React, {
      Component
@@ -53,7 +53,7 @@
         }
 
         componentDidMount() {
-              axios.get(`http://localhost:5000/user/${this.state.user._id}/results`)
+              axios.get(process.env.REACT_APP_BACKEND + `/user/${this.state.user._id}/results`)
               .then(response => {
 
                 this.setState({
@@ -65,7 +65,7 @@
                   console.log(error);
               })
 
-              axios.get(`http://localhost:5000/user/${this.state.user._id}/testOrders`)
+              axios.get(process.env.REACT_APP_BACKEND + `/user/${this.state.user._id}/testOrders`)
               .then(response => {
 
                 this.setState((state, props) => ({

@@ -2,7 +2,7 @@
  * @Author: dylanlawless
  * @Date:   2020-01-16T09:51:11+00:00
  * @Last modified by:   dylanlawless
- * @Last modified time: 2020-03-22T18:04:30+00:00
+ * @Last modified time: 2020-03-25T22:29:32+00:00
  */
  import React, {
      Component
@@ -81,7 +81,7 @@
                     console.log(this.props);
                         const { id } = this.props.match.params;
 
-                          axios.get(`http://localhost:5000/testOrder/${id}`)
+                          axios.get(process.env.REACT_APP_BACKEND + `/testOrder/${id}`)
                             .then(response => {
                                 const encryptedDob = CryptoJS.AES.decrypt(response.data.patient_id.info.dob.toString(), response.data.patient_id.password)
                                 const decryptedDob = encryptedDob.toString(CryptoJS.enc.Utf8);

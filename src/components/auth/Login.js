@@ -2,7 +2,7 @@
  * @Author: dylanlawless
  * @Date:   2020-01-16T09:55:58+00:00
  * @Last modified by:   dylanlawless
- * @Last modified time: 2020-03-16T11:41:05+00:00
+ * @Last modified time: 2020-03-25T22:28:56+00:00
  */
  import React, {
      Component
@@ -115,7 +115,7 @@
             console.log("Cannot have blank email or password");
         } else {
 
-        axios.post('http://localhost:5000/account/login/user/', user)
+        axios.post(process.env.REACT_APP_BACKEND + '/account/login/user/', user)
           .then(res => {
 
             this.setState({
@@ -129,7 +129,7 @@
                 });
             }
             else {
-                axios.post('http://localhost:5000/account/login/user/', user)
+                axios.post(process.env.REACT_APP_BACKEND + '/account/login/user/', user)
                     .then(res => {
                         // save token in local storage
                 localStorage.setItem('jwtToken', res.data.token);
@@ -174,7 +174,7 @@
               pinCode: this.state.pinCode
             }
 
-            axios.post('http://localhost:5000/account/login/user/twoStep', user)
+            axios.post(process.env.REACT_APP_BACKEND + '/account/login/user/twoStep', user)
                 .then(res => {
                     // save token in local storage
                     localStorage.setItem('jwtToken', res.data.token);

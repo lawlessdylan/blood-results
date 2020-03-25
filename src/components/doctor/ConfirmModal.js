@@ -2,7 +2,7 @@
  * @Author: dylanlawless
  * @Date:   2019-11-07T12:38:26+00:00
  * @Last modified by:   dylanlawless
- * @Last modified time: 2020-03-25T18:41:43+00:00
+ * @Last modified time: 2020-03-25T22:29:24+00:00
  */
 
 
@@ -36,7 +36,7 @@ var CryptoJS = require("crypto-js");
 const sendResults = () => {
     if(props.isValid){
     axios.defaults.headers.common['Authorization'] = localStorage.getItem('jwtToken')
-    axios.post('http://localhost:5000/result', props.result)
+    axios.post(process.env.REACT_APP_BACKEND + '/result', props.result)
       .then(res => {
 
 
@@ -47,7 +47,7 @@ const sendResults = () => {
 
 
 
-              axios.put(`http://localhost:5000/testOrder/${props.result.test_order_id}`, testOrder )
+              axios.put(process.env.REACT_APP_BACKEND + `/testOrder/${props.result.test_order_id}`, testOrder )
            .then(res => {
 
               })

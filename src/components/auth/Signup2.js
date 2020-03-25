@@ -2,7 +2,7 @@
  * @Author: dylanlawless
  * @Date:   2020-01-16T09:55:58+00:00
  * @Last modified by:   dylanlawless
- * @Last modified time: 2020-03-19T17:15:27+00:00
+ * @Last modified time: 2020-03-25T22:29:09+00:00
  */
  import React, {
      Component
@@ -129,7 +129,7 @@
 
         console.log(user);
 
-     axios.post('http://localhost:5000/account/register/user/', user)
+     axios.post(process.env.REACT_APP_BACKEND + '/account/register/user/', user)
      .then(res => {
           console.log(res.data);
           if(res.data.success === true){
