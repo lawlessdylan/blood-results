@@ -1,0 +1,200 @@
+/**
+ * @Author: dylanlawless
+ * @Date:   2020-01-16T21:40:36+00:00
+ * @Last modified by:   dylanlawless
+ * @Last modified time: 2020-03-16T10:47:46+00:00
+ */
+
+
+ .title-card{
+     font-size: 60px;
+     font-weight:bold;
+     color: #cf3c3c;
+     text-align: center;
+     padding-bottom: 30px;
+ }
+ .title-card-auth{
+     margin-top: 40px;
+     font-size: 35px;
+     font-weight:bold;
+     color: #fff;
+     text-align: center;
+     padding-bottom: 10px;
+ }
+
+ .title-card-edit{
+     margin-top: 40px;
+     font-size: 35px;
+     font-weight:bold;
+     color: #fff;
+     text-align: center;
+     padding-bottom: 30px;
+ }
+ .form-input {
+     border: 0;
+
+     border-radius: 0px;
+     background: transparent;
+     padding: 33px 0px;
+     font-size: 18px;
+     border-bottom: 1px solid #d6d6d6;
+    color: #707070;
+ }
+ .form-input::placeholder{
+     color: #a6a6a6;
+}
+ .form-input:focus {
+     outline: none;
+     box-shadow:none !important;
+     border-bottom: 1px solid #d6d6d6 !important;
+     color: #707070;
+
+  }
+  .form-input-auth {
+      border: 0;
+      border-radius: 0px;
+      background: transparent;
+      padding:38px 0px 30px 0px;
+      font-size: 18px;
+      border-bottom: 1px solid #fff;
+     color: #fff;
+  }
+  .form-input-auth::placeholder{
+      color: #fff;
+ }
+
+
+ .floating-label {
+
+   pointer-events: none;
+   position:absolute;
+   margin-top: -48px;
+   font-size: 18px;
+   transition: 0.3s;
+   transition-timing-function: ease;
+   transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+ }
+
+
+
+ input:focus + span, input:not(:placeholder-shown) + span {
+   opacity:1;
+   font-size: 14px;
+   transform: translateY(-24px);
+
+ }
+
+ /* For IE Browsers*/
+ input:focus + span, input:not(:-ms-input-placeholder) + span {
+   opacity:1;
+   transform: scale(0.8) translateY(-100%) translateX(-30px);
+ }
+
+
+
+
+  .form-input-auth:focus {
+      outline: none;
+      box-shadow:none !important;
+      border-bottom: 1px solid #fff !important;
+      color: #fff;
+      background-color:  #cf3c3c;
+   }
+ .form-button{
+
+     margin-top: 20px;
+     border: none;
+     padding: 0;
+     padding-top: 15px;
+     color: #a6a6a6;
+
+ }
+ .form-button-red{
+
+     margin-top: 32px;
+     border: none;
+     padding: 0;
+     padding-top: 15px;
+     color: #fff;
+
+ }
+
+.doctor-link{
+    text-align: center;
+    text-decoration: none;
+color: #707070;
+}
+.doctor-link:hover{
+    text-align: center;
+    text-decoration: underline;
+    color: #707070;
+}
+
+
+
+@keyframes intro-form {
+  0%   {opacity:0; left:0px; top:100px;}
+  100%  {opacity: 1; left:0px; top:0px;}
+
+
+ }
+
+.steps{
+margin: 0 auto;
+height: 30px;
+width: 190px;
+margin-bottom: 20px;
+
+}
+
+.step-one{
+    width:30px;
+    height:30px;
+    border-radius:15px;
+    font-size:12px;
+    font-weight: bold;
+    color:#fff;
+    line-height:30px;
+    text-align:center;
+    background: #cf3c3c;
+    float: left;
+
+}
+    .unfilled{
+        background-color: white;
+        border: 4px solid #cf3c3c;
+            line-height:22px;
+        color: #cf3c3c;
+
+    }
+
+.line{
+    width: 50px;
+    height: 17px;
+    border-bottom: 5px solid #cf3c3c;
+    float: right;
+}
+
+.form-error{
+    width: 22px;
+    height: 22px;
+    margin-right: 8px;
+    margin-bottom: 2px
+}
+.error-message{
+
+    position: absolute;
+margin-left: 380px;
+width: 200px;
+margin-top: -60px;
+}
+.sigin-col{
+    overflow-x: visible !important;
+     position: static;
+     width: 100%;
+}
+
+.login-error{
+    text-align: center;
+    margin-bottom: 20px;
+}

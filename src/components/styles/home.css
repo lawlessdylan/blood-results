@@ -1,0 +1,174 @@
+/**
+ * @Author: dylanlawless
+ * @Date:   2020-01-16T19:18:54+00:00
+ * @Last modified by:   dylanlawless
+ * @Last modified time: 2020-03-09T10:37:31+00:00
+ */
+
+.main-div    {
+    background-color:  #cf3c3c;
+    height:100% !important;
+    width:100%;
+    padding-top: 50px;
+    overflow-x: hidden;
+
+
+
+}
+
+.home-title{
+    position: relative;
+      -webkit-animation-name: intro; /* Safari 4.0 - 8.0 */
+      -webkit-animation-duration: 2s; /* Safari 4.0 - 8.0 */
+      animation-name: intro;
+      animation-duration: 0.4s;
+
+    color: white;
+    font-size: 120px;
+    font-weight: bold;
+    padding-top: 50px;
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+
+@keyframes intro {
+  0%   {opacity:0; left:0px; top:400px;}
+  100%  {opacity: 1; left:0px; top:0px;}
+
+}
+
+
+.centre-text {
+    margin: 0 auto;
+    font-size: 26px;
+    display: block;
+    text-align: center;
+    line-height: 40px;
+    font-weight: 400;
+    color: white;
+
+    position: relative;
+    -webkit-animation-name: intro-text; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 2s; /* Safari 4.0 - 8.0 */
+    animation-name: intro-text;
+    animation-duration: 0.4s;
+    margin-bottom: 80px;
+}
+
+
+
+@keyframes intro-text {
+  0%   {opacity:0; left:0px; top:600px;}
+  100%  {opacity: 1; left:0px; top:0px;}
+
+}
+.blob{
+    filter:blur(8px);
+    fill: #ba2d2d;
+    width: 800px;
+    animation: blood-move 10s ease-in-out infinite;
+    transform-origin: 50% 0%;
+}
+@keyframes blood-move {
+  0%   { transform: scale(0.32, 0.30)   translate(-700px, 0px) rotate(30deg);  }
+  35%  { transform: scale(0.37, 0.44) translate(100vw, 95vh) rotate(160deg); }
+  40%  { transform: scale(0.37, 0.44) translate(100vw, 95vh) rotate(160deg); }
+  75%  { transform: scale(0.42, 0.32) translate(15vw, 10vh) rotate(-30deg); }
+  80%  { transform: scale(0.42, 0.32) translate(15vw, 10vh) rotate(-30deg); }
+  100% { transform: scale(0.32, 0.30)   translate(-700px, 0px) rotate(30deg);}
+}
+
+/* @keyframes blood-move {
+  0%   { transform: scale(0.32, 0.30)   translate(-700px, 0px) rotate(30deg);  filter:blur(6px) }
+  35%  { transform: scale(0.37, 0.44) translate(100vw, 95vh) rotate(160deg);filter:blur(10px); }
+  40%  { transform: scale(0.37, 0.44) translate(100vw, 95vh) rotate(160deg); filter:blur(10px);}
+  75%  { transform: scale(0.42, 0.32) translate(15vw, 10vh) rotate(-30deg); filter:blur(14px)}
+  80%  { transform: scale(0.42, 0.32) translate(15vw, 10vh) rotate(-30deg); filter:blur(14px)}
+  100% { transform: scale(0.32, 0.30)   translate(-700px, 0px) rotate(30deg); filter:blur(6px)}
+} */
+
+.home-content{
+    margin-top: 50px;
+
+}
+
+.content-div{
+    width: auto;
+    margin: 10px;
+
+}
+.content-main{
+    position: relative;
+    margin-bottom: 80px;
+    margin-top: 9   0px;
+
+    -webkit-animation-name: intro-text; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 2s; /* Safari 4.0 - 8.0 */
+    animation-name: intro-text;
+    animation-duration: 0.4s;
+
+}
+
+@keyframes intro-text {
+  0%   {opacity:0; left:0px; top:600px;}
+  100%  {opacity: 1; left:0px; top:0px;}
+
+}
+
+
+.content-title{
+    text-align: center;
+    color: #fff;
+    font-size: 26px;
+    font-weight: 400;
+
+}
+
+
+.content-text{
+    padding: 10px 0px;
+    color: #fff;
+    text-align: center;
+    line-height: 32px;
+}
+.link-button{
+    background-color:  #cf3c3c;
+    color: #fff;
+    border-radius: 30px;
+    border-color: #dbdbdb;
+    padding: 16px 30px;
+    width: 160px;
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2)
+
+
+
+}
+.link-button:hover {
+    text-decoration: none;
+    border-color: #fff;
+    background-color:  #fff;
+    color: #cf3c3c;
+
+}
+.content-button{
+    margin: 0 auto;
+    padding-top: 20px;
+    display: flex;
+  justify-content: center;
+}
+.vl {
+  height: 160px;
+  margin: 40px;
+  margin-top: 65px;
+  width: 0%;
+
+
+}
+
+.test-content{
+    padding-right: 100px;
+}
+.blank-div{
+    padding: 75px;
+}

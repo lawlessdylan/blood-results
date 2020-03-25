@@ -1,0 +1,96 @@
+/**
+ * @Author: dylanlawless
+ * @Date:   2020-01-16T19:18:54+00:00
+ * @Last modified by:   dylanlawless
+ * @Last modified time: 2020-03-05T09:48:38+00:00
+ */
+
+
+ .small-title {
+
+     color: #cf3c3c;
+     padding-top: 30px;
+     text-align: center;
+     margin-bottom: 30px;
+
+     position: relative;
+       -webkit-animation-name: intro-tests; /* Safari 4.0 - 8.0 */
+       -webkit-animation-duration: 2s; /* Safari 4.0 - 8.0 */
+       animation-name: intro-tests;
+       animation-duration: 0.4s;
+ }
+
+ .test-card{
+         border-radius: 30px;
+         overflow: hidden;
+         padding-left: 0px;
+         padding-right: 0px;
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+
+
+ }
+
+ .test-card-body{
+     margin: 10px 15px;
+ }
+ .test-title{
+     float: left;
+     padding-top: 20px;
+     padding-left: 20px;
+     color: #cf3c3c;
+     font-weight: 600;
+ }
+ .test-logo{
+     float: left;
+     margin-top: 17px;
+ }
+
+
+ .test-heading{
+     padding-left: 15px;
+     margin-bottom: 20px;
+ }
+ .test-points{
+     padding: 20px 0px;
+
+ }
+ .test-desc{
+     padding-top: 5px;
+     line-height: 28px;
+ }
+ .test-list{
+     margin-top: 10px;
+ }
+
+ .tests-for-li{
+     padding-top: 10px;
+ }
+
+
+
+@keyframes intro-tests {
+  0%   {opacity:0; left:0px; top:100px;}
+  100%  {opacity: 1; left:0px; top:0px;}
+
+}
+
+.card-group{
+    position: relative;
+      -webkit-animation-name: intro-cards; /* Safari 4.0 - 8.0 */
+      -webkit-animation-duration: 2s; /* Safari 4.0 - 8.0 */
+      animation-name: intro-cards;
+      animation-duration: 0.4s;
+
+}
+@keyframes intro-cards {
+  0%   {opacity:0; left:0px; top:200px;}
+  100%  {opacity: 1; left:0px; top:0px;}
+
+}
+
+.test-order-submit {
+    float: right;
+    padding: 15px 15px;
+    border-color: #dbdbdb;
+    color: #707070;
+}
