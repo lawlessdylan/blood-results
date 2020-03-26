@@ -2,7 +2,7 @@
  * @Author: dylanlawless
  * @Date:   2020-01-16T09:51:11+00:00
  * @Last modified by:   dylanlawless
- * @Last modified time: 2020-03-26T13:55:24+00:00
+ * @Last modified time: 2020-03-26T19:55:24+00:00
  */
  import React, {
      Component
@@ -168,23 +168,23 @@
                                 </div>
                                 <div className="dashboard-nav">
 
-                                
+
 
                                 <Nav defaultActiveKey="/home" className="flex-column">
                                         <Nav.Link onClick={this.showAllTable.bind(true)} className="side-nav-link">
-                                            <div className="link-div" style={this.state.showResults && this.state.showPending ?  {borderBottom: '2px solid #525252'}  : {}}>
+                                            <div className="link-div" style={this.state.showResults && this.state.showPending ?  {borderBottom: '2px solid #525252', color: '#525252'}  : {}}>
                                                 View all
                                             </div>
                                         </Nav.Link>
                                         <Nav.Link onClick={this.showResultsTable.bind(true)} className="2 side-nav-link" >
-                                        <div className="link-div" style={this.state.showResults && !this.state.showPending? {borderBottom: '2px solid #525252'}  : {}}>
+                                        <div className="link-div" style={this.state.showResults && !this.state.showPending? {borderBottom: '2px solid #525252', color: '#525252'}  : {}}>
                                             Received
                                         </div>
 
 
                                             </Nav.Link>
                                         <Nav.Link onClick={this.showPendingTable.bind(true)}  className="3 side-nav-link">
-                                        <div className="link-div" style={!this.state.showResults && this.state.showPending? {borderBottom: '2px solid #525252'}  : {}}>
+                                        <div className="link-div" style={!this.state.showResults && this.state.showPending? {borderBottom: '2px solid #525252', color: '#525252'}  : {}}>
                                             Pending
                                         </div>
 
@@ -192,7 +192,7 @@
                                             </Nav.Link>
                                         <Nav.Link  onClick={this.showAllTestOrders.bind(true)} className="4 side-nav-link">
 
-                                        <div className="link-div" style={this.state.showTestOrders? {borderBottom: '2px solid #525252'}  : {}}>
+                                        <div className="link-div" style={this.state.showTestOrders? {borderBottom: '2px solid #525252', color: '#525252'}  : {}}>
                                             Order history
                                         </div>
 
