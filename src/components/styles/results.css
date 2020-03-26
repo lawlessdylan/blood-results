@@ -2,17 +2,17 @@
  * @Author: dylanlawless
  * @Date:   2020-01-17T16:07:41+00:00
  * @Last modified by:   dylanlawless
- * @Last modified time: 2020-03-25T16:33:44+00:00
+ * @Last modified time: 2020-03-26T19:30:39+00:00
  */
 
 
 .results-dashboard{
-    height: 550px;
+    height: 580px;
     border-radius: 30px;
     /* padding-bottom: 50px; */
     padding: 0px;
     overflow: scroll;
-
+    margin-top: 25px;
 
     position: relative;
       -webkit-animation-name: intro-dash; /* Safari 4.0 - 8.0 */
@@ -20,17 +20,40 @@
       animation-name: intro-dash;
       animation-duration: 0.4s;
 
+      /* -webkit-box-shadow: 10px 10px 16px -12px rgba(130,130,130,1);
+-moz-box-shadow: 10px 10px 16px -12px rgba(130,130,130,1);
+box-shadow: 10px 10px 16px -12px rgba(130,130,130,1); */
 
 }
 
 .side-nav{
- height: 100%;
+
  margin: 0px;
  padding: 20px 30px;
    top: 0;
    bottom: 0;
    overflow: visible;
 
+}
+.results-nav{
+    margin-top: 65px;
+}
+.results-nav-form{
+    margin-top: 60px !important;
+}
+
+.results-search{
+    width: 540px;
+    padding: 10px;
+    padding-left: 20px;
+    border: 1px solid #d6d6d6;
+    border-radius: 30px;
+    color: #525252;
+
+}
+
+.results-search:focus{
+    outline: 0;
 }
 
 .results-logo{
@@ -40,8 +63,9 @@
 
 }
 .dashboard-logo{
-    width: 28px;
-    height: 36px;
+    width: 20px;
+    height: 27px;
+    margin-top: 5px;
 
 }
 .dashboard-title{
@@ -64,10 +88,10 @@
     font-size: 16px;
     color: #525252;
     width: 100%;
-
+    padding-left: 300px !important;
 }
 .results-div{
-    padding-left: 0px;
+
     border-left: 1px solid #d6d6d6;
 
 }
@@ -88,11 +112,23 @@ td{
     padding:16px 16px !important;
     vertical-align: middle !important;
 }
+.first-row{
+    padding-left:40px !important;
 
+
+}
+.last-td{
+    width: 20% !important;
+}
 
 tbody{
     color: #707070;
+    padding-left: 100px;
 }
+table{
+
+}
+
 
 .create-result{
     height: 550px;
@@ -189,18 +225,19 @@ tbody{
 .dashboard-nav{
     margin-top: 80px;
 
-
 }
 
 .side-nav-link{
 
-    width: 100%;
+    width: auto;
     margin-bottom: 3px;
     color: #707070;
     border-bottom: 2px solid transparent;
 
 }
-
+.sortby-form{
+    float: right;
+}
 a.side-nav-link:hover {
     text-decoration: none;
     color: #525252;
@@ -208,6 +245,7 @@ a.side-nav-link:hover {
 
 
 }
+
 
 
 .link-div{
