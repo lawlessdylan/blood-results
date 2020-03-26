@@ -2,7 +2,7 @@
  * @Author: dylanlawless
  * @Date:   2020-01-14T11:44:04+00:00
  * @Last modified by:   dylanlawless
- * @Last modified time: 2020-03-25T22:12:08+00:00
+ * @Last modified time: 2020-03-26T10:11:02+00:00
  */
 
 
@@ -10,7 +10,7 @@
 const express = require('express');
 const body_parser = require('body-parser');
 const cors = require('cors');
-require('dotenv').config();
+// require('dotenv').config();
 
 const mongoose = require('mongoose');
 const userRouter = require('./routes/user');
