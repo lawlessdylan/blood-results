@@ -2,7 +2,7 @@
  * @Author: dylanlawless
  * @Date:   2020-01-16T09:51:11+00:00
  * @Last modified by:   dylanlawless
- * @Last modified time: 2020-03-25T22:29:32+00:00
+ * @Last modified time: 2020-03-26T14:30:26+00:00
  */
  import React, {
      Component
@@ -11,7 +11,9 @@
  import axios from 'axios';
  import ConfirmModal from './ConfirmModal';
  import Moment from 'react-moment';
-
+ import {
+   withRouter
+ } from 'react-router-dom'
  import { Card, Form, Col, Button, Row} from 'react-bootstrap';
 
  import '../styles/results.css';
@@ -24,6 +26,7 @@
      constructor(props) {
          super(props);
 
+         this.goBack = this.goBack.bind(this);
 
          this.state = {
 
@@ -81,7 +84,7 @@
                     console.log(this.props);
                         const { id } = this.props.match.params;
 
-                          axios.get(process.env.REACT_APP_BACKEND + `/testOrder/${id}`)
+                          axios.get(`http://localhost:5000/testOrder/${id}`)
                             .then(response => {
                                 const encryptedDob = CryptoJS.AES.decrypt(response.data.patient_id.info.dob.toString(), response.data.patient_id.password)
                                 const decryptedDob = encryptedDob.toString(CryptoJS.enc.Utf8);
@@ -182,6 +185,10 @@
 
                              return true;
                          };
+                         goBack(){
+                             this.props.history.push('/testOrders')
+
+                     }
 
            render(){
 
@@ -228,7 +235,7 @@
                           </Card.Body>
                           <Card.Footer className="card-footer">
 
-                          <Button variant="primary" className="nav-button form-button">
+                          <Button onClick={this.goBack} variant="primary" className="nav-button form-button">
                            Cancel
                           </Button>
                           <div className="result-submit">
@@ -251,4 +258,4 @@
 
 
            }
- export default CreateHa1bc;
+ export default withRouter(CreateHa1bc);

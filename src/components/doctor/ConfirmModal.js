@@ -2,7 +2,7 @@
  * @Author: dylanlawless
  * @Date:   2019-11-07T12:38:26+00:00
  * @Last modified by:   dylanlawless
- * @Last modified time: 2020-03-25T22:29:24+00:00
+ * @Last modified time: 2020-03-26T14:29:05+00:00
  */
 
 
@@ -10,7 +10,9 @@ import React, {useState} from 'react';
 import Modal from 'react-bootstrap/Modal';
 import { Button } from 'react-bootstrap';
 import axios from 'axios';
-
+import {
+  withRouter
+} from 'react-router-dom'
  import '../styles/results.css';
 
 
@@ -36,7 +38,7 @@ var CryptoJS = require("crypto-js");
 const sendResults = () => {
     if(props.isValid){
     axios.defaults.headers.common['Authorization'] = localStorage.getItem('jwtToken')
-    axios.post(process.env.REACT_APP_BACKEND + '/result', props.result)
+    axios.post('http://localhost:5000/result', props.result)
       .then(res => {
 
 
@@ -47,9 +49,9 @@ const sendResults = () => {
 
 
 
-              axios.put(process.env.REACT_APP_BACKEND + `/testOrder/${props.result.test_order_id}`, testOrder )
+              axios.put(`http://localhost:5000/testOrder/${props.result.test_order_id}`, testOrder )
            .then(res => {
-
+               props.history.push('/testOrders')
               })
              .catch(err => console.log(err));
 
@@ -102,4 +104,4 @@ const sendResults = () => {
    );
  }
 
- export default ConfirmModal;
+ export default withRouter(ConfirmModal);

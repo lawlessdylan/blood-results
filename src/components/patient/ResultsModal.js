@@ -2,7 +2,7 @@
  * @Author: dylanlawless
  * @Date:   2019-11-07T12:38:26+00:00
  * @Last modified by:   dylanlawless
- * @Last modified time: 2020-03-25T16:29:11+00:00
+ * @Last modified time: 2020-03-26T11:06:16+00:00
  */
 
 
@@ -42,10 +42,11 @@ var moment = require('moment');
 
 let results = props.results;
 let testName = props.result.test_id.test_name;
+let patientId = props.result.patient_id._id;
 
  results = results.filter(function(result) {
 
-             return result.test_id.test_name.match(testName);
+             return result.test_id.test_name.match(testName) && result.patient_id._id.match(patientId);
 
 
          })
@@ -78,7 +79,7 @@ let testName = props.result.test_id.test_name;
         width={450}
         height={250}
         data={ results.map((result) => {
-             const encryptedResult = CryptoJS.AES.decrypt(result.test_result.toString(), props.userId)
+             const encryptedResult = CryptoJS.AES.decrypt(result.test_result.toString(), result.patient_id._id)
              const decryptedResult = encryptedResult.toString(CryptoJS.enc.Utf8);
              const date= moment(result.date).format("MMM Do YY");
              // if(this.state.decryptedResult > 4){
