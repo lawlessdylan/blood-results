@@ -2,7 +2,7 @@
  * @Author: dylanlawless
  * @Date:   2020-01-16T09:51:11+00:00
  * @Last modified by:   dylanlawless
- * @Last modified time: 2020-03-27T14:21:31+00:00
+ * @Last modified time: 2020-03-27T16:30:43+00:00
  */
  import React, {
      Component
@@ -10,20 +10,21 @@
 
  import axios from 'axios';
 
- import { Card, CardDeck, Button} from 'react-bootstrap';
+ import { Card, CardDeck, Button, Collapse} from 'react-bootstrap';
  import drop from '../../images/drop.png';
 
 
  import ConfirmOrderModal from './ConfirmOrderModal';
 
  import '../styles/tests.css';
-
-
+ import { useState } from 'react';
  class Tests extends Component {
 
 
      constructor(props) {
          super(props);
+
+
 
 
           this.state = {
@@ -36,7 +37,10 @@
                 doctor_id: '',
                 date: new Date(),
                 status: "Pending"
-            }
+            },
+
+              open: false,
+              setOpen: false
 
           };
 
@@ -78,8 +82,26 @@
 
 
 
+          setOpen = () => {
+              if(this.state.open === false){
+                  this.setState({
+                    open: true
+                  })
+              } else {
+                  this.setState({
+                    open: false
+                  })
+              }
+
+          }
+
+
 
      render() {
+
+
+
+
          return (
 
 
@@ -109,6 +131,7 @@
                                                 </div>
                                           </Card.Title>
                                       </div>
+                                          <Collapse in={this.state.open}>
                                        <div>
                                        <span className="test-desc">
                                                 {test.test_description}
@@ -124,10 +147,15 @@
                                             </ul>
                                         </div>
                                        </div>
+                                           </Collapse>
                                      </Card.Body>
                                      <Card.Footer className="card-footer">
                                         <ConfirmOrderModal patient_id={this.props.user._id} doctor_id={test.test_doctor._id} test_id={test._id} />
-                                     <Button className="nav-button">View more</Button>
+                                     <Button className="nav-button"
+                                                     onClick={this.setOpen.bind(true)}
+                                                    aria-controls="example-collapse-text"
+                                                    aria-expanded={this.state.open}>View more</Button>
+
 
                                      </Card.Footer>
                                     </Card>

@@ -2,7 +2,7 @@
  * @Author: dylanlawless
  * @Date:   2020-01-16T19:18:54+00:00
  * @Last modified by:   dylanlawless
- * @Last modified time: 2020-03-05T09:48:38+00:00
+ * @Last modified time: 2020-03-27T16:30:07+00:00
  */
 
 
@@ -26,7 +26,7 @@
          padding-left: 0px;
          padding-right: 0px;
           box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-
+          width: 358px !important;
 
  }
 
@@ -39,6 +39,7 @@
      padding-left: 20px;
      color: #cf3c3c;
      font-weight: 600;
+
  }
  .test-logo{
      float: left;
