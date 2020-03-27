@@ -2,7 +2,7 @@
  * @Author: dylanlawless
  * @Date:   2020-01-16T09:55:58+00:00
  * @Last modified by:   dylanlawless
- * @Last modified time: 2020-03-26T14:27:56+00:00
+ * @Last modified time: 2020-03-27T14:20:59+00:00
  */
  import React, {
      Component
@@ -108,7 +108,7 @@
 
         console.log(user);
         axios.defaults.headers.common['Authorization'] = localStorage.getItem('jwtToken')
-        axios.put(`http://localhost:5000/user/${this.props.user._id}`, user )
+        axios.put(process.env.REACT_APP_BACKEND + `/user/${this.props.user._id}`, user )
      .then(res => {
 
           console.log(res.data);
@@ -122,7 +122,7 @@
 
     componentDidMount(){
 
-        axios.get('http://localhost:5000/user/' + this.props.user._id)
+        axios.get(process.env.REACT_APP_BACKEND + '/user/' + this.props.user._id)
         .then(response => {
             const encryptedAddress = CryptoJS.AES.decrypt(response.data.info.address.toString(), response.data.password)
             const decryptedAddress = encryptedAddress.toString(CryptoJS.enc.Utf8);

@@ -2,7 +2,7 @@
  * @Author: dylanlawless
  * @Date:   2020-01-16T09:51:11+00:00
  * @Last modified by:   dylanlawless
- * @Last modified time: 2020-03-05T09:46:30+00:00
+ * @Last modified time: 2020-03-27T14:21:31+00:00
  */
  import React, {
      Component
@@ -46,7 +46,7 @@
 
               /* GET request for tests */
 
-              axios.get('http://localhost:5000/test')
+              axios.get(process.env.REACT_APP_BACKEND + '/test')
               .then(response => {
 
                 this.setState({

@@ -2,7 +2,7 @@
  * @Author: dylanlawless
  * @Date:   2019-11-07T12:38:26+00:00
  * @Last modified by:   dylanlawless
- * @Last modified time: 2020-03-18T19:02:45+00:00
+ * @Last modified time: 2020-03-27T14:20:24+00:00
  */
 
 
@@ -38,12 +38,12 @@ const testOrder = {
     status: "Pending"
 
  }
- 
+
 const sendTestOrder = () => {
 
 
     axios.defaults.headers.common['Authorization'] = localStorage.getItem('jwtToken')
-    axios.post('http://localhost:5000/testOrder', testOrder)
+    axios.post(process.env.REACT_APP_BACKEND + '/testOrder', testOrder)
       .then(res => {
           console.log(res.data);
           handleClose()
