@@ -2,12 +2,12 @@
  * @Author: dylanlawless
  * @Date:   2020-01-17T16:07:41+00:00
  * @Last modified by:   dylanlawless
- * @Last modified time: 2020-03-26T19:57:00+00:00
+ * @Last modified time: 2020-03-30T12:24:26+01:00
  */
 
 
 .results-dashboard{
-    height: 580px;
+    max-height: 580px;
     border-radius: 30px;
     /* padding-bottom: 50px; */
     padding: 0px;
@@ -40,6 +40,23 @@ box-shadow: 10px 10px 16px -12px rgba(130,130,130,1); */
 }
 .results-nav-form{
     margin-top: 60px !important;
+}
+
+.down-arrow{
+    margin-left: auto;
+      margin-right: auto;
+      display: block;
+
+height: 28px;
+
+
+}
+.empty-message{
+    font-size: 26px;
+    text-align: center;
+    margin-top: 50px;
+    padding-bottom: 50px;
+    font-weight: 400;
 }
 
 .results-search{
@@ -136,7 +153,7 @@ table{
 
 }
 .card-footer{
-    padding-top: 20px ;
+    padding-top: 0px ;
     padding-bottom: 20px;
     background-color: #fff;
     margin-left: 0px;
@@ -145,7 +162,19 @@ table{
 
 
 }
+.test-results-dashboard {
+        margin-top: 40px;
 
+}
+
+.col-12{
+    padding: 0px !important;
+}
+.card-button{
+    margin-bottom: 20px;
+bottom: 0;
+    float: right;
+}
 .result-test-type{
     color: #cf3c3c;
     font-weight: bold;
@@ -159,6 +188,7 @@ table{
     border-radius: 30px;
     border-color: #dbdbdb;
 }
+
 
 .create-button:hover {
     text-decoration: none;
@@ -261,4 +291,3 @@ a.side-nav-link:hover {
 
         color: #525252;
 }
- 

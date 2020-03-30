@@ -2,7 +2,7 @@
  * @Author: dylanlawless
  * @Date:   2019-11-07T12:38:26+00:00
  * @Last modified by:   dylanlawless
- * @Last modified time: 2020-03-27T14:19:24+00:00
+ * @Last modified time: 2020-03-30T12:34:58+01:00
  */
 
 
@@ -55,7 +55,7 @@ const sendResults = () => {
               })
              .catch(err => console.log(err));
 
-             console.log("Sent");
+             console.log(props.result);
          })
       .catch(err => {
           console.log(err);
@@ -74,7 +74,7 @@ const sendResults = () => {
      <div>
 
         <Button className="nav-button" type="submit" onClick={handleShow}>
-            Send result
+            Confirm Result
          </Button>
 
        <Modal className="my-modal" show={show} onHide={handleClose} aria-labelledby="contained-modal-title-vcenter" centered>
@@ -95,7 +95,7 @@ const sendResults = () => {
           Cancel
          </Button>
              <Button onClick={sendResults} target="blank"className="nav-button" variant="primary" type="submit">
-              Send result
+              Send Result
              </Button>
          </Modal.Footer>
        </Modal>

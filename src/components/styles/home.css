@@ -2,12 +2,12 @@
  * @Author: dylanlawless
  * @Date:   2020-01-16T19:18:54+00:00
  * @Last modified by:   dylanlawless
- * @Last modified time: 2020-03-09T10:37:31+00:00
+ * @Last modified time: 2020-03-27T17:49:07+00:00
  */
 
 .main-div    {
     background-color:  #cf3c3c;
-    height:100% !important;
+    height:900px !important;
     width:100%;
     padding-top: 50px;
     overflow-x: hidden;
@@ -24,12 +24,29 @@
       animation-duration: 0.4s;
 
     color: white;
-    font-size: 120px;
+    font-size: 70px;
     font-weight: bold;
     padding-top: 50px;
     text-align: center;
     margin-bottom: 28px;
+    margin-top: 60px;
 }
+.home-title-tests{
+    position: relative;
+      -webkit-animation-name: intro; /* Safari 4.0 - 8.0 */
+      -webkit-animation-duration: 2s; /* Safari 4.0 - 8.0 */
+      animation-name: intro;
+      animation-duration: 0.4s;
+      mix-blend-mode: multiply;
+    color:  #cf3c3c;
+    font-size: 70px;
+    font-weight: bold;
+    padding-top: 50px;
+    text-align: center;
+    margin-bottom: 28px;
+    margin-top: 60px;
+}
+
 
 
 @keyframes intro {
@@ -48,6 +65,7 @@
     font-weight: 400;
     color: white;
 
+
     position: relative;
     -webkit-animation-name: intro-text; /* Safari 4.0 - 8.0 */
     -webkit-animation-duration: 2s; /* Safari 4.0 - 8.0 */
@@ -55,6 +73,25 @@
     animation-duration: 0.4s;
     margin-bottom: 80px;
 }
+
+.centre-text-tests {
+    margin: 0 auto;
+    font-size: 26px;
+    display: block;
+    text-align: center;
+    line-height: 40px;
+    font-weight: 400;
+    color:  #cf3c3c;
+    mix-blend-mode: multiply;
+
+    position: relative;
+    -webkit-animation-name: intro-text; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 2s; /* Safari 4.0 - 8.0 */
+    animation-name: intro-text;
+    animation-duration: 0.4s;
+    margin-bottom: 80px;
+}
+
 
 
 
@@ -69,14 +106,15 @@
     width: 800px;
     animation: blood-move 10s ease-in-out infinite;
     transform-origin: 50% 0%;
+    opacity: 20%;
 }
 @keyframes blood-move {
-  0%   { transform: scale(0.32, 0.30)   translate(-700px, 0px) rotate(30deg);  }
-  35%  { transform: scale(0.37, 0.44) translate(100vw, 95vh) rotate(160deg); }
-  40%  { transform: scale(0.37, 0.44) translate(100vw, 95vh) rotate(160deg); }
-  75%  { transform: scale(0.42, 0.32) translate(15vw, 10vh) rotate(-30deg); }
-  80%  { transform: scale(0.42, 0.32) translate(15vw, 10vh) rotate(-30deg); }
-  100% { transform: scale(0.32, 0.30)   translate(-700px, 0px) rotate(30deg);}
+  0%   { transform: scale(0.32, 0.30)   translate(-700px, 250px) rotate(30deg);  }
+  35%  { transform: scale(0.34, 0.37) translate(100vw, 110vh) rotate(160deg); }
+  40%  { transform: scale(0.34, 0.37) translate(100vw, 110vh) rotate(160deg); }
+  75%  { transform: scale(0.42, 0.32) translate(15vw, 20vh) rotate(-30deg); }
+  80%  { transform: scale(0.42, 0.32) translate(15vw, 20vh) rotate(-30deg); }
+  100% { transform: scale(0.32, 0.30)   translate(-700px, 250px) rotate(30deg);}
 }
 
 /* @keyframes blood-move {
@@ -100,8 +138,8 @@
 }
 .content-main{
     position: relative;
-    margin-bottom: 80px;
-    margin-top: 9   0px;
+    height: 300px;
+
 
     -webkit-animation-name: intro-text; /* Safari 4.0 - 8.0 */
     -webkit-animation-duration: 2s; /* Safari 4.0 - 8.0 */

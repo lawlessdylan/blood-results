@@ -2,7 +2,7 @@
  * @Author: dylanlawless
  * @Date:   2020-01-15T09:52:42+00:00
  * @Last modified by:   dylanlawless
- * @Last modified time: 2020-03-25T22:31:47+00:00
+ * @Last modified time: 2020-03-30T12:35:22+01:00
  */
  import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -12,6 +12,8 @@ import './App.css';
 import MyNav from './Nav';
 import Home from './patient/Home';
 import Tests from './patient/Tests';
+
+import TestResults from './patient/TestResults';
 
 import Results from './patient/Results';
 import ResultsChart from './patient/ResultsChart';
@@ -167,10 +169,17 @@ render(){
                 <Route user={user} path="/signup"  component={Signup} />
                 <Route user={user} path="/signup2"  component={Signup2} />
 
+                {(isDoctor) ? (
+                    <Route path="/home"  component={DoctorTestOrders}>
+                        {isDoctor ? <DoctorTestOrders doctorName={doctorName} user={user} /> : <Redirect to="/home" />}
+                    </Route>
 
-              <Route exact path="/home" component={Home} >
-                      {loggedIn ? <Home user={user} /> : <Redirect to="/login" />}
-              </Route>
+                ):(
+                    <Route path="/home"  component={TestResults}>
+                          <TestResults isDoctor={isDoctor} loggedIn={loggedIn} user={user}/>
+                    </Route>
+                )}
+
               <Route exact path="/editUser" component={EditUser} >
                       {loggedIn ? <EditUser user={user} /> : <Redirect to="/editUser" />}
               </Route>
@@ -178,8 +187,9 @@ render(){
                   {loggedIn ? <Tests user={user}/> : <Redirect to="/login" />}
               </Route>
 
+
               <Route path="/results"  component={Results}>
-                  {loggedIn ? <Results user={user} /> : <Redirect to="/login" />}
+                  {loggedIn ? <Results isDoctor={isDoctor} user={user} /> : <Redirect to="/login" />}
               </Route>
 
               <Route path="/resultsChart"  component={ResultsChart}>
@@ -187,9 +197,7 @@ render(){
               </Route>
 
 
-              <Route path="/testOrders"  component={DoctorTestOrders}>
-                  {isDoctor ? <DoctorTestOrders doctorName={doctorName} user={user} /> : <Redirect to="/home" />}
-              </Route>
+
 
                 {isDoctor ? <Route path="/createThyroid/:id" component={CreateThyroid} /> : <Redirect to="/home" />}
                {isDoctor ? <Route path="/createHa1bc/:id" component={CreateHa1bc} /> : <Redirect to="/home" />}

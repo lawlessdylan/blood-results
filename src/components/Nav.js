@@ -2,7 +2,7 @@
  * @Author: dylanlawless
  * @Date:   2020-01-15T10:04:17+00:00
  * @Last modified by:   dylanlawless
- * @Last modified time: 2020-03-19T19:01:06+00:00
+ * @Last modified time: 2020-03-30T12:29:06+01:00
  */
  import React from 'react';
  import './App.css';
@@ -47,7 +47,7 @@
 
           componentDidUpdate(){
 
-              if(this.props.location.pathname === '/home' || this.props.location.pathname === '/login'
+              if(this.props.location.pathname === '/login'
               || this.props.location.pathname === '/signup' || this.props.location.pathname === '/signup2'
               || this.props.location.pathname === '/editUser'){
                    if(this.state.navClass !== '-home'){
@@ -89,24 +89,21 @@
 
                       {(isDoctor) ? (
                           <div>
-                                   <NavLink className={"navbar-link"+ this.state.navClass} activeClassName={"chosen" + this.state.navClass} exact to="/home">Home</NavLink>
-
-                                   <NavLink className={"navbar-link"+ this.state.navClass} activeClassName={"chosen" + this.state.navClass} to="/results">Results</NavLink>
-                                   <NavLink className={"navbar-link"+ this.state.navClass} activeClassName={"chosen" + this.state.navClass} to="/testOrders">Test orders</NavLink>
+                           <NavLink className={"navbar-link"+ this.state.navClass} activeClassName={"chosen" + this.state.navClass} exact to="/home">Home</NavLink>
                           </div>
                                ) : (
                                    <div>
-                                       <NavLink className={"navbar-link"+ this.state.navClass} activeClassName={"chosen" + this.state.navClass} exact to="/home">Home</NavLink>
-                                       <NavLink className={"navbar-link"+ this.state.navClass} activeClassName={"chosen" + this.state.navClass} to="/tests">Tests</NavLink>
-                                       <NavLink className={"navbar-link"+ this.state.navClass} activeClassName={"chosen" + this.state.navClass} to="/results">Results</NavLink>
-
+                                    <NavLink className={"navbar-link"+ this.state.navClass} activeClassName={"chosen" + this.state.navClass} exact to="/home">Home</NavLink>
                                    </div>
 
                                    )}
 
                       </div>
                   ) : (
-                      <> </>
+                      <>
+                      <NavLink className={"navbar-link"+ this.state.navClass} activeClassName={"chosen" + this.state.navClass} exact to="/home">Home</NavLink>
+
+                      </>
 
                       )}
                     </Nav>
@@ -130,6 +127,7 @@
                              </div>
                          ) : (
                              <>
+
                              <div className="navbar-links sign-up-button">
                                      <NavLink className={"navbar-link"+ this.state.navClass} activeClassName={"chosen" + this.state.navClass} to="/login">Log in</NavLink>
                              </div>

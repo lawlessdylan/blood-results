@@ -2,7 +2,7 @@
  * @Author: dylanlawless
  * @Date:   2020-01-16T09:51:11+00:00
  * @Last modified by:   dylanlawless
- * @Last modified time: 2020-03-27T14:19:32+00:00
+ * @Last modified time: 2020-03-30T12:34:48+01:00
  */
  import React, {
      Component
@@ -42,7 +42,7 @@
                 status: ''
 
             },
-                test_result: '',
+                // test_result: '',
 
            testOrder: [],
            patient_id: {
@@ -155,6 +155,7 @@
                         test_id:  this.state.test_id._id,
                         test_order_id: this.state._id,
                         test_result: CryptoJS.AES.encrypt(this.state.test_result, this.state.patient_id._id).toString(),
+                            // test_result: this.state.test_result,
                         date: new Date(),
                         status: "Sent"
                     }
@@ -191,6 +192,8 @@
                      }
 
            render(){
+
+               console.log(this.state.patient_id._id);
 
                return (
 
