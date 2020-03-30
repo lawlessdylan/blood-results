@@ -1,8 +1,8 @@
 /**
  * @Author: dylanlawless
- * @Date:   2020-01-14T11:44:04+00:00
+ * @Date:   2020-03-27T08:30:50+00:00
  * @Last modified by:   dylanlawless
- * @Last modified time: 2020-03-26T10:11:41+00:00
+ * @Last modified time: 2020-03-30T15:35:31+01:00
  */
 
 
@@ -10,7 +10,7 @@
 const express = require('express');
 const body_parser = require('body-parser');
 const cors = require('cors');
-// require('dotenv').config();
+require('dotenv').config();
 
 const mongoose = require('mongoose');
 const userRouter = require('./routes/user');
@@ -54,7 +54,6 @@ app.get("/", (req, res) => {
 
 
 const port = process.env.PORT || 5000;
-
 app.listen(port, () => {
   console.log(`Server listening on ${port}`);
 });
