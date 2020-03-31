@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start ": "nodemon ./server.js"
+    "watch ": "nodemon ./server.js"
   },
   "author": "Dylan Lawless",
-  "license": "ISC",      
+  "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
