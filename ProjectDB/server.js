@@ -2,15 +2,16 @@
  * @Author: dylanlawless
  * @Date:   2020-03-27T08:30:50+00:00
  * @Last modified by:   dylanlawless
- * @Last modified time: 2020-03-30T16:15:20+01:00
+ * @Last modified time: 2020-03-31T15:57:25+01:00
  */
 
 
+require('dotenv').config();
 
 const express = require('express');
 const body_parser = require('body-parser');
 const cors = require('cors');
-require('dotenv').config();
+
 
 const mongoose = require('mongoose');
 const userRouter = require('./routes/user');
