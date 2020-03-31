@@ -2,7 +2,7 @@
  * @Author: dylanlawless
  * @Date:   2019-11-07T12:38:26+00:00
  * @Last modified by:   dylanlawless
- * @Last modified time: 2020-03-31T16:26:56+01:00
+ * @Last modified time: 2020-03-31T19:56:18+01:00
  */
 
 
@@ -43,7 +43,7 @@ const sendTestOrder = () => {
 
 
     axios.defaults.headers.common['Authorization'] = localStorage.getItem('jwtToken')
-    axios.post('http://localhost:5000/testOrder', testOrder)
+    axios.post(process.env.REACT_APP_BACKEND +'/testOrder', testOrder)
       .then(res => {
           console.log(res.data);
           handleClose()
