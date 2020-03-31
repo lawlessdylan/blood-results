@@ -2,7 +2,7 @@
  * @Author: dylanlawless
  * @Date:   2019-11-07T12:38:26+00:00
  * @Last modified by:   dylanlawless
- * @Last modified time: 2020-03-27T14:20:24+00:00
+ * @Last modified time: 2020-03-31T16:26:56+01:00
  */
 
 
@@ -43,7 +43,7 @@ const sendTestOrder = () => {
 
 
     axios.defaults.headers.common['Authorization'] = localStorage.getItem('jwtToken')
-    axios.post(process.env.REACT_APP_BACKEND + '/testOrder', testOrder)
+    axios.post('http://localhost:5000/testOrder', testOrder)
       .then(res => {
           console.log(res.data);
           handleClose()
@@ -56,10 +56,17 @@ const sendTestOrder = () => {
 
      <div>
 
-        <Button className="nav-button card-button" type="submit" onClick={handleShow}>
-            Order test
-         </Button>
 
+
+
+                                {(props.isLoggedIn) ? (
+                                    <Button className="nav-button card-button" type="submit" onClick={handleShow}>
+                                        Order Test
+                                     </Button>
+                                         ) : (
+
+                                        <></>
+                                         )}
 
        <Modal className="my-modal" show={show} onHide={handleClose} aria-labelledby="contained-modal-title-vcenter" centered>
 
