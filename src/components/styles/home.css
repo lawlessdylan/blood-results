@@ -2,7 +2,7 @@
  * @Author: dylanlawless
  * @Date:   2020-01-16T19:18:54+00:00
  * @Last modified by:   dylanlawless
- * @Last modified time: 2020-03-27T17:49:07+00:00
+ * @Last modified time: 2020-04-09T18:30:41+01:00
  */
 
 .main-div    {
@@ -24,12 +24,12 @@
       animation-duration: 0.4s;
 
     color: white;
-    font-size: 70px;
+    font-size: 45px;
     font-weight: bold;
-    padding-top: 50px;
+
     text-align: center;
-    margin-bottom: 28px;
-    margin-top: 60px;
+    margin-bottom: 20px;
+    margin-top:60px;
 }
 .home-title-tests{
     position: relative;
@@ -39,12 +39,12 @@
       animation-duration: 0.4s;
       mix-blend-mode: multiply;
     color:  #cf3c3c;
-    font-size: 70px;
+    font-size: 45px;
     font-weight: bold;
-    padding-top: 50px;
+
     text-align: center;
-    margin-bottom: 28px;
-    margin-top: 60px;
+    margin-bottom: 20px;
+    margin-top:60px;
 }
 
 
@@ -101,20 +101,20 @@
 
 }
 .blob{
-    filter:blur(8px);
+    filter:blur(5px);
     fill: #ba2d2d;
     width: 800px;
     animation: blood-move 10s ease-in-out infinite;
     transform-origin: 50% 0%;
-    opacity: 20%;
+    opacity: 70%;
 }
 @keyframes blood-move {
-  0%   { transform: scale(0.32, 0.30)   translate(-700px, 250px) rotate(30deg);  }
-  35%  { transform: scale(0.34, 0.37) translate(100vw, 110vh) rotate(160deg); }
-  40%  { transform: scale(0.34, 0.37) translate(100vw, 110vh) rotate(160deg); }
-  75%  { transform: scale(0.42, 0.32) translate(15vw, 20vh) rotate(-30deg); }
-  80%  { transform: scale(0.42, 0.32) translate(15vw, 20vh) rotate(-30deg); }
-  100% { transform: scale(0.32, 0.30)   translate(-700px, 250px) rotate(30deg);}
+  0%   { transform: scale(0.28, 0.26)   translate(-700px, 150px) rotate(30deg);  }
+  35%  { transform: scale(0.30, 0.33) translate(100vw, 110vh) rotate(160deg); }
+  40%  { transform: scale(0.30, 0.33) translate(100vw, 110vh) rotate(160deg); }
+  75%  { transform: scale(0.37, 0.28) translate(15vw, 20vh) rotate(-30deg); }
+  80%  { transform: scale(0.37, 0.28) translate(15vw, 20vh) rotate(-30deg); }
+  100% { transform: scale(0.28, 0.26)   translate(-700px, 150px) rotate(30deg);}
 }
 
 /* @keyframes blood-move {
@@ -127,7 +127,7 @@
 } */
 
 .home-content{
-    margin-top: 50px;
+    margin-top:20px;
 
 }
 
@@ -139,7 +139,7 @@
 .content-main{
     position: relative;
     height: 300px;
-
+    margin-top: 0px;
 
     -webkit-animation-name: intro-text; /* Safari 4.0 - 8.0 */
     -webkit-animation-duration: 2s; /* Safari 4.0 - 8.0 */

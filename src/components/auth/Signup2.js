@@ -2,7 +2,7 @@
  * @Author: dylanlawless
  * @Date:   2020-01-16T09:55:58+00:00
  * @Last modified by:   dylanlawless
- * @Last modified time: 2020-03-25T22:29:09+00:00
+ * @Last modified time: 2020-04-09T20:39:00+01:00
  */
  import React, {
      Component
@@ -129,7 +129,7 @@
 
         console.log(user);
 
-     axios.post(process.env.REACT_APP_BACKEND + '/account/register/user/', user)
+     axios.post(process.env.REACT_APP_BACKEND +'/account/register/user/', user)
      .then(res => {
           console.log(res.data);
           if(res.data.success === true){
@@ -264,10 +264,10 @@
                     </div>
 
              </div>
-             <div className="col-md-6">
+             <div className="col-md-6 right-side">
              <Card className="signin-card">
                   <Card.Body>
-                    <Card.Title className="title-card-auth">Sign up</Card.Title>
+                    <Card.Title className="title-card-auth login-title">Sign up</Card.Title>
 
                         <Form onSubmit={this.onSubmit}>
 
@@ -349,7 +349,7 @@
 
                                  <Form.Group>
                                     <Form.Label>  </Form.Label>
-                                    <Form.Control className="form-input-auth" type="text" placeholder="Six-digit code"
+                                    <Form.Control className="form-input-two-step pin-input" type="text" placeholder="Six-digit code"
                                         name="pinCode"
                                          onChange={this.handleInputChange}
                                       />

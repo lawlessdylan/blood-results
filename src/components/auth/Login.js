@@ -2,7 +2,7 @@
  * @Author: dylanlawless
  * @Date:   2020-01-16T09:55:58+00:00
  * @Last modified by:   dylanlawless
- * @Last modified time: 2020-03-25T22:28:56+00:00
+ * @Last modified time: 2020-04-09T20:38:46+01:00
  */
  import React, {
      Component
@@ -115,7 +115,7 @@
             console.log("Cannot have blank email or password");
         } else {
 
-        axios.post(process.env.REACT_APP_BACKEND + '/account/login/user/', user)
+        axios.post(process.env.REACT_APP_BACKEND +'/account/login/user/', user)
           .then(res => {
 
             this.setState({
@@ -127,9 +127,10 @@
                 this.setState({
                   show:true
                 });
+                 this.nameInput.focus();
             }
             else {
-                axios.post(process.env.REACT_APP_BACKEND + '/account/login/user/', user)
+                axios.post(process.env.REACT_APP_BACKEND +'/account/login/user/', user)
                     .then(res => {
                         // save token in local storage
                 localStorage.setItem('jwtToken', res.data.token);
@@ -174,7 +175,7 @@
               pinCode: this.state.pinCode
             }
 
-            axios.post(process.env.REACT_APP_BACKEND + '/account/login/user/twoStep', user)
+            axios.post(process.env.REACT_APP_BACKEND +'/account/login/user/twoStep', user)
                 .then(res => {
                     // save token in local storage
                     localStorage.setItem('jwtToken', res.data.token);
@@ -245,7 +246,7 @@
              <div className = " login-main" >
              <div className = "container container-login" >
              <div className="row">
-             <div className="col-10 test-div">
+             <div className="col-12 test-div">
              <div className="row">
 
              <div className="col-md-6 left-side">
@@ -258,10 +259,10 @@
                     </div>
 
              </div>
-                 <div className="col-md-6">
+                 <div className="col-6 right-side">
                  <Card className="login-card">
                       <Card.Body>
-                        <Card.Title className="title-card-auth">Sign in</Card.Title>
+                        <Card.Title className="title-card-auth login-title">Sign in</Card.Title>
                         <div className="login-error">{this.state.loginError}</div>
                         <Form onSubmit={this.onSubmit}>
                                <Form.Group>
@@ -288,19 +289,20 @@
                                   <Modal backdrop="static" className="my-modal" show={this.state.show}
                                   onHide={this.handleClose}   centered>
 
-                                    <Modal.Header className="two-step-title">
+                                    <Modal.Header className="">
 
                                     <Modal.Title >Verification pin</Modal.Title>
                                     </Modal.Header>
-                                    <Modal.Body className="two-step-body">
+                                    <Modal.Body className="">
 
                                     <div>Please enter your six-digit pin code.</div>
 
                                     <Form.Group>
                                        <Form.Label>  </Form.Label>
-                                       <Form.Control className="form-input-auth pin-input" type="password" maxLength="6"
+                                       <Form.Control ref={(input) => { this.nameInput = input; }}  className="form-input-two-step pin-input" type="password" maxLength="6"
                                            name="pinCode"
                                             onChange={this.handleInputChange}
+
                                          />
                                     </Form.Group>
 
@@ -308,12 +310,12 @@
                                     </Modal.Body>
 
 
-                                   <Modal.Footer className="two-step-footer">
-                                        <Button variant="primary" className="nav-button-home" onClick={this.cancelModel}>
+                                   <Modal.Footer className="">
+                                        <Button variant="primary" className="nav-button" onClick={this.cancelModel}>
                                          Cancel
                                         </Button>
 
-                                        <Button target="blank"className="nav-button-home"  onClick={this.submitTwoStep}>
+                                        <Button target="blank"className="nav-button"  onClick={this.submitTwoStep}>
                                          Confirm
                                         </Button>
                                     </Modal.Footer>

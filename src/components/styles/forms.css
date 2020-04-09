@@ -2,7 +2,7 @@
  * @Author: dylanlawless
  * @Date:   2020-01-16T21:40:36+00:00
  * @Last modified by:   dylanlawless
- * @Last modified time: 2020-03-16T10:47:46+00:00
+ * @Last modified time: 2020-04-09T12:29:50+01:00
  */
 
 
@@ -21,9 +21,18 @@
      text-align: center;
      padding-bottom: 10px;
  }
+ .title-card-create-patient{
+     margin-top: 40px;
+     font-size: 28px;
+     font-weight:bold;
+     color: #cf3c3c;
+
+     text-align: center;
+     padding-bottom: 10px;
+ }
 
  .title-card-edit{
-     margin-top: 40px;
+     margin-top: 0px;
      font-size: 35px;
      font-weight:bold;
      color: #fff;
@@ -59,10 +68,25 @@
       border-bottom: 1px solid #fff;
      color: #fff;
   }
+  .form-input-two-step {
+  }
+
+
   .form-input-auth::placeholder{
       color: #fff;
  }
-
+.form-input-create-patient{
+    border: 0;
+    border-radius: 0px;
+    background: transparent;
+    padding:38px 0px 30px 0px;
+    font-size: 18px;
+    border-bottom: 1px solid #d6d6d6;
+color: #525252;
+}
+.form-input-auth::placeholder{
+    color: #cf3c3c;
+}
 
  .floating-label {
 
@@ -74,6 +98,7 @@
    transition-timing-function: ease;
    transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
  }
+
 
 
 
@@ -100,12 +125,33 @@
       color: #fff;
       background-color:  #cf3c3c;
    }
+   .form-input-two-step:focus {
+       outline: none;
+       box-shadow:none !important;
+
+    }
+   .form-input-create-patient:focus {
+       outline: none;
+       box-shadow:none !important;
+       border-bottom: 1px solid #525252 !important;
+       color:#525252;
+       background-color:  #fff;
+    }
  .form-button{
 
      margin-top: 20px;
      border: none;
      padding: 0;
      padding-top: 15px;
+     color: #a6a6a6;
+
+ }
+ .form-cancel{
+
+     margin-top: 20px;
+     border: none;
+     padding-top: 15px;
+     margin-left: -10px;
      color: #a6a6a6;
 
  }
@@ -197,4 +243,96 @@ margin-top: -60px;
 .login-error{
     text-align: center;
     margin-bottom: 20px;
+}
+
+.right-side{
+    margin-top: 30px;
+    padding-bottom: 80px;
+    padding-right: 40px;
+    background: #cf3c3c;
+    box-shadow:  20px 20px 60px #b03333,
+             -20px -20px 60px #ee4545;
+    border-radius: 50px;
+    width: 70% !important;
+
+    position: relative;
+      -webkit-animation-name: intro-right-signin; /* Safari 4.0 - 8.0 */
+      -webkit-animation-duration: 2s; /* Safari 4.0 - 8.0 */
+      animation-name: intro-right-signin;
+      animation-duration: 0.4s;
+}
+.login-title{
+    margin-top: -10px;
+    margin-bottom: 30px;
+}
+.form-check-input{
+    /* box-shadow:  -3px 3px 7px #d9d9d9,
+             3px -3px 7px #ffffff !important;
+        border-radius: 30px !important;
+        border: 1px solid blue !important; */
+}
+
+
+.create-card-title{
+    font-size: 28px;
+    text-align: center;
+    color:  #cf3c3c;
+    padding: 30px;
+    margin-bottom: 5px;
+
+}
+
+.left-create{
+    height: 100%;
+    margin-bottom: 20px;
+}
+.right-create{
+
+}
+.bottom-create{
+    margin-top: 5px;
+    margin-left: 15px !important;
+}
+.create-subheading{
+    color: #cf3c3c;
+    font-weight: bold;
+    font-size: 18px;
+
+
+}
+.create-body{
+
+    padding: 0px 0px 0px 20px;
+}
+.create-footer{
+
+}
+
+.create-list-item{
+    padding: 5px 10px 8px 0px !important;
+    width: 100%;
+    border: 0px !important;
+}
+.create-list{
+    border: 0px;
+}
+.list-div{
+    padding: 0px !important;
+    width: 100%;
+}
+
+.list-div-right{
+}
+
+.list-content{
+    font-weight: 500;
+}
+
+.list-row{
+    margin-top: 15px;
+    margin-left: 0px;
+}
+.result-list-row{
+    margin-top: -30px;
+    margin-left: 15px;
 }

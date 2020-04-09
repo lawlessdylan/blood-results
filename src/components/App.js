@@ -2,7 +2,7 @@
  * @Author: dylanlawless
  * @Date:   2020-01-15T09:52:42+00:00
  * @Last modified by:   dylanlawless
- * @Last modified time: 2020-03-31T19:55:05+01:00
+ * @Last modified time: 2020-04-09T20:42:56+01:00
  */
  import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -10,25 +10,24 @@ import React from 'react';
 import './App.css';
 
 import MyNav from './Nav';
-import Home from './patient/Home';
-import Tests from './patient/Tests';
-
-import TestResults from './patient/TestResults';
-
-import Results from './patient/Results';
-import ResultsChart from './patient/ResultsChart';
 
 
 import Signup from './auth/Signup';
 import Signup2 from './auth/Signup2';
 import Login from './auth/Login';
 
+import Home from './patient/Home';
 import EditUser from './patient/EditUser';
+import TestResults from './patient/TestResults';
 
 import DoctorTestOrders from './doctor/DoctorTestOrders';
-import CreateThyroid from './doctor/CreateThyroid';
-import CreateHa1bc from './doctor/CreateHa1bc';
-import CreateVitaminB12 from './doctor/CreateVitaminB12';
+import CreateResult from './doctor/CreateResult';
+import CreatePatient from './doctor/CreatePatient';
+import ViewPatient from './doctor/ViewPatient';
+import ViewPatients from './doctor/ViewPatients';
+import OrderTest from './doctor/OrderTest';
+
+
 
 import axios from 'axios';
 
@@ -161,6 +160,7 @@ render(){
     const user = this.state.user;
     const page = this.state.page;
 
+
     return(
         <Router history={BrowserHistory}>
             <MyNav doctorName={doctorName} user={user} page={page}  isDoctor={isDoctor} loggedIn={loggedIn} onLogout={this.authHandler} />
@@ -170,40 +170,56 @@ render(){
                 <Route user={user} path="/signup2"  component={Signup2} />
 
                 {(isDoctor) ? (
+                    <>
                     <Route path="/home"  component={DoctorTestOrders}>
-                        {isDoctor ? <DoctorTestOrders doctorName={doctorName} user={user} /> : <Redirect to="/home" />}
+                        {isDoctor ? <DoctorTestOrders doctorName={doctorName} user={user} isDoctor={isDoctor} loggedIn={loggedIn} /> : <Redirect to="/home" />}
                     </Route>
 
+                    <Route path="/orderTest"  component={OrderTest}>
+                        {isDoctor ? <OrderTest doctorName={doctorName} user={user} isDoctor={isDoctor} loggedIn={loggedIn} /> : <Redirect to="/home" />}
+                    </Route>
+
+                    <Route path="/createPatient"  component={CreatePatient}>
+                        {isDoctor ? <CreatePatient  user={user}/> : <Redirect to="/login" />}
+                    </Route>
+
+
+                    <Route path="/createResult/:id" component={CreateResult}>
+                          {isDoctor ? <CreateResult user={user}/> : <Redirect to="/login" />}
+                    </Route>
+
+                    <Route path="/viewPatient/:id" component={ViewPatient}>
+                          {isDoctor ? <ViewPatient  user={user}/> : <Redirect to="/login" />}
+                    </Route>
+
+                    <Route path="/viewPatients" component={ViewPatients}>
+                          {isDoctor ? <ViewPatients  user={user}/> : <Redirect to="/login" />}
+                    </Route>
+
+
+
+
+                    </>
                 ):(
-                    <Route path="/home"  component={TestResults}>
-                          <TestResults isDoctor={isDoctor} loggedIn={loggedIn} user={user}/>
-                    </Route>
+                    <>
+                    {(loggedIn) ? (
+                        <>
+                        <Route path="/home"  component={TestResults}>
+                              <TestResults isDoctor={isDoctor} loggedIn={loggedIn} user={user}/>
+                        </Route>
+
+
+                                      <Route exact path="/editUser" component={EditUser} >
+                                              {loggedIn ? <EditUser user={user} /> : <Redirect to="/editUser" />}
+                                      </Route>
+                                      </>
+                    ):(
+                        <Route path="/home"  component={Home}>
+                              <Home isDoctor={isDoctor} loggedIn={loggedIn} user={user}/>
+                        </Route>
+                    )}
+                    </>
                 )}
-
-              <Route exact path="/editUser" component={EditUser} >
-                      {loggedIn ? <EditUser user={user} /> : <Redirect to="/editUser" />}
-              </Route>
-              <Route path="/tests"  component={Tests}>
-                  {loggedIn ? <Tests user={user}/> : <Redirect to="/login" />}
-              </Route>
-
-
-              <Route path="/results"  component={Results}>
-                  {loggedIn ? <Results isDoctor={isDoctor} user={user} /> : <Redirect to="/login" />}
-              </Route>
-
-              <Route path="/resultsChart"  component={ResultsChart}>
-                  {loggedIn ? <ResultsChart user={user} /> : <Redirect to="/login" />}
-              </Route>
-
-
-
-
-                {isDoctor ? <Route path="/createThyroid/:id" component={CreateThyroid} /> : <Redirect to="/home" />}
-               {isDoctor ? <Route path="/createHa1bc/:id" component={CreateHa1bc} /> : <Redirect to="/home" />}
-               {isDoctor ? <Route path="/createVitaminB12/:id" component={CreateVitaminB12} /> : <Redirect to="/home" />}
-
-
 
 
 

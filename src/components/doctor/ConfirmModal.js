@@ -2,7 +2,7 @@
  * @Author: dylanlawless
  * @Date:   2019-11-07T12:38:26+00:00
  * @Last modified by:   dylanlawless
- * @Last modified time: 2020-03-30T12:34:58+01:00
+ * @Last modified time: 2020-04-09T20:39:23+01:00
  */
 
 
@@ -38,7 +38,7 @@ var CryptoJS = require("crypto-js");
 const sendResults = () => {
     if(props.isValid){
     axios.defaults.headers.common['Authorization'] = localStorage.getItem('jwtToken')
-    axios.post(process.env.REACT_APP_BACKEND + '/result', props.result)
+    axios.post(process.env.REACT_APP_BACKEND +'/result', props.result)
       .then(res => {
 
 
@@ -49,9 +49,9 @@ const sendResults = () => {
 
 
 
-              axios.put(process.env.REACT_APP_BACKEND + `/testOrder/${props.result.test_order_id}`, testOrder )
+              axios.put(process.env.REACT_APP_BACKEND +`/testOrder/${props.result.test_order_id}`, testOrder )
            .then(res => {
-               props.history.push('/testOrders')
+               props.history.push('/home')
               })
              .catch(err => console.log(err));
 
@@ -59,6 +59,7 @@ const sendResults = () => {
          })
       .catch(err => {
           console.log(err);
+           console.log(props.result);
       });
 
 

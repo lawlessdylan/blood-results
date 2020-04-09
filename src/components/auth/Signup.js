@@ -2,7 +2,7 @@
  * @Author: dylanlawless
  * @Date:   2020-01-16T09:56:47+00:00
  * @Last modified by:   dylanlawless
- * @Last modified time: 2020-03-19T17:12:32+00:00
+ * @Last modified time: 2020-04-08T10:45:14+01:00
  */
 
 
@@ -132,6 +132,7 @@ class Signup extends Component {
          let passwordError = "";
          let confirmPasswordError = "";
 
+
          if(!this.state.email.includes('@')){
                 emailError = 'Invalid email address';
          }
@@ -209,10 +210,10 @@ class Signup extends Component {
                    </div>
 
             </div>
-                <div className="col-md-6 signin-col">
+                <div className="col-md-6 right-side" >
                 <Card className="signin-card">
                      <Card.Body>
-                       <Card.Title className="title-card-auth">Sign up</Card.Title>
+                       <Card.Title className="title-card-auth login-title">Sign up</Card.Title>
 
 
                        <Form onSubmit={this.onSubmit}>

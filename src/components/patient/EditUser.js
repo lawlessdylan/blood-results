@@ -2,7 +2,7 @@
  * @Author: dylanlawless
  * @Date:   2020-01-16T09:55:58+00:00
  * @Last modified by:   dylanlawless
- * @Last modified time: 2020-03-27T14:20:59+00:00
+ * @Last modified time: 2020-04-09T20:41:31+01:00
  */
  import React, {
      Component
@@ -108,7 +108,7 @@
 
         console.log(user);
         axios.defaults.headers.common['Authorization'] = localStorage.getItem('jwtToken')
-        axios.put(process.env.REACT_APP_BACKEND + `/user/${this.props.user._id}`, user )
+        axios.put(`http://localhost:5000/user/${this.props.user._id}`, user )
      .then(res => {
 
           console.log(res.data);
@@ -122,7 +122,7 @@
 
     componentDidMount(){
 
-        axios.get(process.env.REACT_APP_BACKEND + '/user/' + this.props.user._id)
+        axios.get(process.env.REACT_APP_BACKEND +'/user/' + this.props.user._id)
         .then(response => {
             const encryptedAddress = CryptoJS.AES.decrypt(response.data.info.address.toString(), response.data.password)
             const decryptedAddress = encryptedAddress.toString(CryptoJS.enc.Utf8);
@@ -216,25 +216,27 @@
                             onChange={this.handleInputChange}
                           />
 
-                           <span className="floating-label">Full name</span>
+                           <span className="floating-label">Full Name</span>
 
                         </Form.Group>
                              <span className="error-message">{this.state.nameError}</span>
                                <Form.Group>
-                               <Form.Control className="form-input-auth" type="date" required="required" placeholder="Date of Birth"
+                               <Form.Control className="form-input-auth" type="date" required="required" placeholder=" "
                                    name="dob"
                                    value={this.state.dob}
                                    onChange={this.handleInputChange}
                                  />
+                                 <span className="floating-label">Date of Birth</span>
 
                                </Form.Group>
                                     <span className="error-message">{this.state.dobError}</span>
                                <Form.Group>
-                               <Form.Control className="form-input-auth" type="text" placeholder="Phone number"
+                               <Form.Control className="form-input-auth" type="text" placeholder=" "
                                    name="phone_num"
                                    value={this.state.phone_num}
                                    onChange={this.handleInputChange}
                                  />
+                                 <span className="floating-label">Phone Number</span>
 
                                </Form.Group>
                                <span className="error-message">{this.state.phone_numError}</span>
@@ -244,7 +246,7 @@
                                    value={this.state.weight}
                                    onChange={this.handleInputChange}
                                  />
-
+                                  <span className="floating-label">Weight</span>
                                </Form.Group>
 
                                     <span className="error-message">{this.state.weightError}</span>
@@ -255,7 +257,7 @@
                                    value={this.state.address}
                                    onChange={this.handleInputChange}
                                  />
-
+                                   <span className="floating-label">Address</span>
                                </Form.Group>
 
                                     <span className="error-message">{this.state.addressError}</span>

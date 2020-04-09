@@ -2,7 +2,7 @@
  * @Author: dylanlawless
  * @Date:   2020-01-15T10:04:17+00:00
  * @Last modified by:   dylanlawless
- * @Last modified time: 2020-03-31T16:05:53+01:00
+ * @Last modified time: 2020-04-09T16:36:27+01:00
  */
  import React from 'react';
  import './App.css';
@@ -10,7 +10,6 @@
  import Nav from 'react-bootstrap/Nav'
  import { Navbar, Button} from 'react-bootstrap';
  import drop from '../images/drop.png';
-
 
  import { withRouter } from "react-router";
  var CryptoJS = require("crypto-js");
@@ -32,6 +31,8 @@
           logout = () => {
               localStorage.removeItem('jwtToken');
               this.props.onLogout();
+              window.location = "/login"
+
           }
           Toggle = () => {
               this.setState({toggle:!this.state.toggle})
@@ -47,7 +48,8 @@
 
           componentDidUpdate(){
 
-              if(this.props.location.pathname === '/login'
+
+              if(this.props.location.pathname === '/login' || this.props.location.pathname === '/home' && this.props.loggedIn === false
               || this.props.location.pathname === '/signup' || this.props.location.pathname === '/signup2'
               || this.props.location.pathname === '/editUser'){
                    if(this.state.navClass !== '-home'){
@@ -69,13 +71,15 @@
  render(){
      const loggedIn = this.props.loggedIn;
      const isDoctor = this.props.isDoctor;
+
+
      return(
 
 
                  <Navbar className={"my-nav" + this.state.navClass} expand="lg"  variant={this.state.toggler}>
 
 
-                 <Navbar.Brand className="logo-centre " href="/home">
+                 <Navbar.Brand className="logo-centre " href="/">
                     <img src={drop} className={"my-logo"+ this.state.navClass} alt="logo"/>
                  </Navbar.Brand>
                    <Navbar.Toggle className={"navbar-toggler" + this.state.navClass} />
@@ -89,8 +93,13 @@
 
                       {(isDoctor) ? (
                           <div>
-                           <NavLink className={"navbar-link"+ this.state.navClass} activeClassName={"chosen" + this.state.navClass} exact to="/home">Home</NavLink>
+                           <NavLink className={"navbar-link"+ this.state.navClass} activeClassName={"chosen" + this.state.navClass} exact to="/home">Tests</NavLink>
+
+
+
+                           <NavLink className={"navbar-link"+ this.state.navClass} activeClassName={"chosen" + this.state.navClass} exact to="/viewPatients">Patients</NavLink>
                           </div>
+
                                ) : (
                                    <div>
                                     <NavLink className={"navbar-link"+ this.state.navClass} activeClassName={"chosen" + this.state.navClass} exact to="/home">Home</NavLink>

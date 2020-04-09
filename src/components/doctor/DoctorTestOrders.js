@@ -2,7 +2,7 @@
  * @Author: dylanlawless
  * @Date:   2020-01-16T09:51:11+00:00
  * @Last modified by:   dylanlawless
- * @Last modified time: 2020-03-30T12:34:19+01:00
+ * @Last modified time: 2020-04-09T20:40:20+01:00
  */
  import React, {
      Component
@@ -12,12 +12,16 @@
 
  import Moment from 'react-moment';
 
- import { Card, Table, Button, Nav, Navbar, Form } from 'react-bootstrap';
+ import { Card, Table, Button, Nav, Navbar, Form, ListGroup } from 'react-bootstrap';
  import '../styles/results.css';
  import drop from '../../images/drop.png';
- import { Link } from 'react-router-dom';
+ import { Link , withRouter} from 'react-router-dom';
 
  import ResultsModal from '../patient/ResultsModal';
+
+ import OrderTest from './OrderTest';
+
+ import CreatePatient from './CreatePatient';
  var CryptoJS = require("crypto-js");
 
 
@@ -35,94 +39,141 @@
             test_id: {
                 test_name: ''
             },
+            loading: true,
             encryptedPatientName : '',
             decryptedPatientName  : '',
-            showSent: false,
+            showSent: true,
             showNew: true,
+            showPatients: false,
             fullAmount: 0,
             users: [],
              searchString: '',
+             searchStringSent: '',
+             patients: [],
+             newTestOrder: false
 
           };
            this.handleChange = this.handleChange.bind(this);
+           this.newTestCallback = this.newTestCallback.bind(this);
            this.sortTableAZ = this.sortTableAZ.bind(this);
            this.sortTableZA = this.sortTableZA.bind(this);
            this.sortTableOldNew = this.sortTableOldNew.bind(this);
            this.sortTableNewOld = this.sortTableNewOld.bind(this);
+
+           this.sortSentTableAZ = this.sortSentTableAZ.bind(this);
+           this.sortSentTableZA = this.sortSentTableZA.bind(this);
+           this.sortSentTableOldNew = this.sortSentTableOldNew.bind(this);
+           this.sortSentTableNewOld = this.sortSentTableNewOld.bind(this);
+
             }
 
         componentDidMount() {
 
-              axios.get(process.env.REACT_APP_BACKEND + `/user/doctor/${this.props.user._id}/testOrders`)
+            axios.get(process.env.REACT_APP_BACKEND +`/user/doctor/${this.props.user._id}/testOrders`)
+            .then(response => {
+
+                let testOrders = response.data;
+                testOrders.map((testOrder) => {
+                     const encryptedPatientName = CryptoJS.AES.decrypt(testOrder.patient_id.name.toString(), testOrder.patient_id.password)
+                     const decryptedPatientName = encryptedPatientName.toString(CryptoJS.enc.Utf8);
+                     testOrder.patient_id.name = decryptedPatientName
+
+                 })
+                 this.setState((state, props) => ({
+                     testOrders: testOrders.reverse(),
+
+                     loading: false
+
+                 }));
+
+
+
+
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+
+              axios.get(process.env.REACT_APP_BACKEND +`/user/doctor/${this.props.user._id}/results`)
               .then(response => {
 
 
-                this.setState((state, props) => ({
-                    testOrders: response.data.reverse(),
+                  let results = response.data;
+                  results.map((result) => {
+                       const encryptedPatientName = CryptoJS.AES.decrypt(result.patient_id.name.toString(), result.patient_id.password)
+                       const decryptedPatientName = encryptedPatientName.toString(CryptoJS.enc.Utf8);
+                       result.patient_id.name = decryptedPatientName
 
-                }));
-                this.setState((state, props) => ({
-                users:
-                        this.state.testOrders.map((testOrder) => {
-                             const encryptedPatientName = CryptoJS.AES.decrypt(testOrder.patient_id.name.toString(), testOrder.patient_id.password)
-                             const decryptedPatientName = encryptedPatientName.toString(CryptoJS.enc.Utf8);
-                             testOrder.patient_id.name = decryptedPatientName
+                   })
+                   this.setState((state, props) => ({
+                       sentResults: results.reverse()
+                   }));
 
-                             if(testOrder._id != null){
 
-                                 return(
+                         console.log(response);
+              })
+              .catch((error) => {
+                  console.log(error);
+              })
 
-                                     {
-                                       name: decryptedPatientName
-                                     }
-                             )}
+              axios.get(process.env.REACT_APP_BACKEND +`/user`)
+              .then(response => {
+                  this.setState({
+                      patients: response.data
+                  })
 
-                         })
+                  this.state.patients.map((patient) => {
+                       const encryptedPatientName = CryptoJS.AES.decrypt(patient.name.toString(), patient.password)
+                       const decryptedPatientName = encryptedPatientName.toString(CryptoJS.enc.Utf8);
+                       patient.name = decryptedPatientName
 
-                     }));
+                   })
+                 console.log(response.data);
+
+
+
+
 
               })
               .catch((error) => {
                   console.log(error);
               })
 
-              axios.get(process.env.REACT_APP_BACKEND + `/user/doctor/${this.props.user._id}/results`)
-              .then(response => {
-
-
-                this.setState((state, props) => ({
-                    sentResults: response.data.reverse(),
-                }));
-
-
-                        this.state.sentResults.map((result) => {
-                             const encryptedPatientName = CryptoJS.AES.decrypt(result.patient_id.name.toString(), result.patient_id.password)
-                             const decryptedPatientName = encryptedPatientName.toString(CryptoJS.enc.Utf8);
-                             result.patient_id.name = decryptedPatientName
-
-                         })
-              })
-              .catch((error) => {
-                  console.log(error);
-              })
 
 
           }
 
 
+
+          getTestOrders()  {
+
+          }
+
           showSentOrders = () => {
                   this.setState({
                       showSent: true,
-                      showNew: false
+                      showNew: false,
+                      showPatients: false
 
                   });
           }
           showNewOrders = () => {
                   this.setState({
                       showSent: false,
+                      showPatients: false,
                       showNew: true
                   });
               }
+
+              showAllPatients = () => {
+                      this.setState({
+                          showSent: false,
+                          showNew: false,
+                          showPatients: true
+                      });
+                  }
+
+
 
               removeSent(){
 
@@ -136,7 +187,8 @@
 
               handleChange() {
                   this.setState({
-                      searchString: this.refs.search.value
+                      searchString: this.refs.search.value,
+                      searchStringSent: this.refs.searchSent.value,
                   });
               }
 
@@ -144,7 +196,6 @@
 
                        this.setState({
                            testOrders :  this.state.testOrders.slice().sort((a, b) => a.patient_id.name.localeCompare(b.patient_id.name)),
-                           sentResults :  this.state.sentResults.slice().sort((a, b) => a.patient_id.name.localeCompare(b.patient_id.name))
                        })
 
               }
@@ -152,7 +203,6 @@
 
                        this.setState({
                            testOrders :  this.state.testOrders.slice().sort((a, b) => a.patient_id.name.localeCompare(b.patient_id.name)).reverse(),
-                           sentResults :  this.state.sentResults.slice().sort((a, b) => a.patient_id.name.localeCompare(b.patient_id.name)).reverse()
                        })
               }
 
@@ -160,25 +210,114 @@
 
                        this.setState({
                           testOrders :  this.state.testOrders.slice().sort((a, b) => a.date.localeCompare(b.date)),
+                       })
+
+              }
+              sortTableNewOld(){
+
+                       this.setState({
+                          testOrders :  this.state.testOrders.slice().sort((a, b) => b.date.localeCompare(a.date))
+                       })
+
+              }
+
+              sortSentTableNewOld(){
+
+                       this.setState({
+                          sentResults :  this.state.sentResults.slice().sort((a, b) => b.date.localeCompare(a.date))
+                       })
+
+              }
+              sortSentTableAZ(){
+
+                       this.setState({
+                           sentResults :  this.state.sentResults.slice().sort((a, b) => a.patient_id.name.localeCompare(b.patient_id.name))
+                       })
+
+              }
+              sortSentTableZA(){
+
+                       this.setState({
+                           sentResults :  this.state.sentResults.slice().sort((a, b) => a.patient_id.name.localeCompare(b.patient_id.name)).reverse()
+                       })
+              }
+
+              sortSentTableOldNew(){
+
+                       this.setState({
                           sentResults :  this.state.sentResults.slice().sort((a, b) => a.date.localeCompare(b.date))
                        })
 
               }
 
-              sortTableNewOld(){
+              sortSentTableNewOld(){
 
                        this.setState({
-                          testOrders :  this.state.testOrders.slice().sort((a, b) => b.date.localeCompare(a.date)),
                           sentResults :  this.state.sentResults.slice().sort((a, b) => b.date.localeCompare(a.date))
                        })
 
               }
+
+
+              newTestCallback = (newTestOrder) => {
+                        this.setState({
+                            newTestOrder: newTestOrder
+                        })
+                        console.log("New test order: " + newTestOrder);
+              }
+
+
+              componentDidUpdate(){
+
+                  if(this.state.newTestOrder === true){
+
+                      axios.get(process.env.REACT_APP_BACKEND +`/user/doctor/${this.props.user._id}/testOrders`)
+                      .then(response => {
+
+
+                        this.setState((state, props) => ({
+                            testOrders: response.data.reverse(),
+
+                        }));
+                        this.setState((state, props) => ({
+                        users:
+                                this.state.testOrders.map((testOrder) => {
+                                     const encryptedPatientName = CryptoJS.AES.decrypt(testOrder.patient_id.name.toString(), testOrder.patient_id.password)
+                                     const decryptedPatientName = encryptedPatientName.toString(CryptoJS.enc.Utf8);
+                                     testOrder.patient_id.name = decryptedPatientName
+
+                                     if(testOrder._id != null){
+
+                                         return(
+
+                                             {
+                                               name: decryptedPatientName
+                                             }
+                                     )}
+
+                                 })
+
+                             }));
+
+                      })
+                      .catch((error) => {
+                          console.log(error);
+                      })
+
+                  }
+              }
+
+    //           myCallback = (dataFromChild) => {
+    //     [...we will use the dataFromChild here...]
+    // }
+
 
      render() {
              this.removeSent();
 
             let testOrders = this.state.testOrders;
             let search = this.state.searchString.trim().toLowerCase();
+            let searchSent = this.state.searchStringSent.trim().toLowerCase();
 
             if (search.length > 0) {
                 testOrders = testOrders.filter(function(testOrder) {
@@ -187,13 +326,16 @@
                 }
 
                 let sentResults = this.state.sentResults;
-                if (search.length > 0) {
+                if (searchSent.length > 0) {
                     sentResults = sentResults.filter(function(result) {
 
-                            return result.patient_id.name.toLowerCase().match(search);
+                            return result.patient_id.name.toLowerCase().match(searchSent);
 
                         });
                     }
+
+
+
 
          return (
 
@@ -204,21 +346,22 @@
 
                  <div className="main-results col-12">
 
-
+                 <h4 className="small-title-tests">Test Orders</h4>
 
                 <Navbar>
 
 
                     <Nav className="mr-auto results-nav">
 
-                                                                     <input
-                                                                            className="results-search"
-                                                                            type="text"
-                                                                            value={this.state.searchString}
-                                                                            ref="search"
-                                                                            onChange={this.handleChange}
-                                                                            placeholder="Search by patient name"
-                                                                      />
+                 <input
+                        className="results-search"
+                        type="text"
+                        value={this.state.searchString}
+                        ref="search"
+                        onChange={this.handleChange}
+                        placeholder="Search by patient name"
+                    />
+
                     </Nav>
                     <Form className="results-nav-form" inline>
 
@@ -251,53 +394,29 @@
                     </Form>
 
                 </Navbar>
+
                  <Card className="results-dashboard">
 
 
-                 <Card.Header className="card-header">
-
-                 <Nav variant="tabs" defaultActiveKey="#first">
-                 <Nav.Item>
-                    <Nav.Link onClick={this.showNewOrders.bind(true)} className="side-nav-link">
-
-                        New ({this.state.testOrders.length})
-
-                    </Nav.Link>
-                </Nav.Item>
-                <Nav.Item>
-                    <Nav.Link onClick={this.showSentOrders.bind(true)} className="side-nav-link" >
-                        Sent orders
-
-                    </Nav.Link>
-                </Nav.Item>
-
-                </Nav>
-
-
-                 </Card.Header>
                     <Card.Body className="dashboard row">
-
 
                         <div className="col-12 results-div">
 
                         <Table className="results-table" hover>
 
-                        <thead >
-                            <tr>
-                              <th className="first-row">Test type</th>
-                              <th>Patient name</th>
-                              <th>Date</th>
-                              <th>Status</th>
 
-                               <th>Actions</th>
-                            </tr>
-                          </thead>
-                          <tbody>
+                                    <thead className="results-table-head">
+                                        <tr>
+                                          <th className="first-row">Test type</th>
+                                          <th>Patient name</th>
+                                          <th>Date</th>
+                                          <th>Status</th>
 
+                                           <th>Actions</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody className="results-table-body">
 
-
-                                { this.state.showNew && (
-                                    <>
                                 {testOrders.map((testOrder) => {
 
                                     const test_name = testOrder.test_id.test_name.replace(/\s/g, '');
@@ -321,7 +440,7 @@
                                                 <td>{testOrder.status}</td>
                                                 {(showButton) ? (
                                                     <td className="last-td">
-                                                    <Link  to={`/create${test_name}/${testOrder._id}`}>
+                                                    <Link  to={`/createResult/${testOrder._id}`}>
                                                         <Button className="nav-button">
                                                            Create Result
                                                         </Button>
@@ -336,52 +455,145 @@
                                         )}
                                     })}
 
-                                </>
-
-                            )}
-
-                            { this.state.showSent && (
-                                <>
-                                  {sentResults.map((result) => {
-
-                                      this.state.encryptedResult = CryptoJS.AES.decrypt(result.test_result.toString(), result.patient_id._id)
-                                      this.state.decryptedResult = this.state.encryptedResult.toString(CryptoJS.enc.Utf8);
-
-                                      if(result._id != null){
-
-                                          return(
-
-                                              <tr key={result._id}>
-                                                  <td className="first-row">{result.test_id.test_name}</td>
-                                                  <td>{result.patient_id.info.honorific}{result.patient_id.name}</td>
-                                                  <td><Moment className="" format="D/MM/YYYY">{result.date}</Moment></td>
-                                                  <td>Received</td>
-                                                  <td>
-                                                        <ResultsModal key={result._id} results={sentResults} result={result} decryptedResult={this.state.decryptedResult} />
-
-                                                    </td>
-
-                                              </tr>
-
-                                      )}
-
-
-                                  })}
-                                  </>
-                                  ) }
 
 
 
-                            </tbody>
+                                        </tbody>
+
+
+
+
 
                         </Table>
+
 
                         </div>
 
 
                     </Card.Body>
                 </Card>
+
+
+                <h4 className="small-title-tests">Sent Results</h4>
+                <Navbar>
+
+
+                    <Nav className="mr-auto results-nav">
+
+                 <input
+                        className="results-search"
+                        type="text"
+                        value={this.state.searchStringSent}
+                        ref="searchSent"
+                        onChange={this.handleChange}
+                        placeholder="Search by patient name"
+                    />
+
+                    </Nav>
+                    <Form className="results-nav-form" inline>
+
+                                                             <Form.Check  inline className="sortCheck" type="radio"
+                                                                name="phone_num"
+                                                                label="Most recent"
+                                                                onClick={this.sortSentTableNewOld}
+                                                                defaultChecked
+                                                              />
+
+                                                                <Form.Check inline className="sortCheck" type="radio"
+                                                                    name="phone_num"
+                                                                    label="Oldest"
+                                                                    onClick={this.sortSentTableOldNew}
+                                                                  />
+
+                                                             <Form.Check inline className="sortCheck" type="radio"
+                                                                name="phone_num"
+                                                               label='A - Z'
+                                                                onClick={this.sortSentTableAZ}
+                                                              />
+
+                                                            <Form.Check inline className="sortCheck" type="radio"
+                                                                name="phone_num"
+                                                                label='Z - A'
+
+                                                                onClick={this.sortSentTableZA}
+                                                              />
+
+                    </Form>
+
+                </Navbar>
+
+
+                <Card className="results-dashboard">
+
+
+                   <Card.Body className="dashboard row">
+
+                       <div className="col-12 results-div">
+
+                           <Table className="results-table" hover>
+
+                                   { this.state.showNew && (
+                                       <>
+                                       <thead className="results-table-head">
+                                           <tr>
+                                             <th className="first-row">Test type</th>
+                                             <th>Patient name</th>
+                                             <th>Date</th>
+                                             <th>Status</th>
+
+                                              <th>Actions</th>
+                                           </tr>
+                                         </thead>
+                                         <tbody className="results-table-body">
+
+
+
+
+
+
+                                     {sentResults.map((result) => {
+
+                                         this.state.encryptedResult = CryptoJS.AES.decrypt(result.test_result.toString(), result.patient_id._id)
+                                         this.state.decryptedResult = this.state.encryptedResult.toString(CryptoJS.enc.Utf8);
+
+                                         if(result._id != null){
+
+                                             return(
+
+                                                 <tr key={result._id}>
+                                                     <td className="first-row">{result.test_id.test_name}</td>
+                                                     <td>{result.patient_id.info.honorific}{result.patient_id.name}</td>
+                                                     <td><Moment className="" format="D/MM/YYYY">{result.date}</Moment></td>
+                                                     <td>Received</td>
+                                                     <td>
+                                                           <ResultsModal key={result._id} isDoctor={this.props.isDoctor} doctorName={this.props.doctorName} results={sentResults} result={result} decryptedResult={this.state.decryptedResult} />
+
+                                                       </td>
+
+                                                 </tr>
+
+                                         )}
+
+
+                                     })}
+                                           </tbody>
+                                     </>
+                                     ) }
+
+
+
+
+                           </Table>
+
+
+                       </div>
+
+
+                   </Card.Body>
+               </Card>
+
                  </div>
+
                  <div className="blob test-blob">
 
                  <svg xlinkHref="http://www.w3.org/1999/xlink" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 310 350">
@@ -400,7 +612,8 @@
 
 
          );
-     }
+
+ }
  }
 
- export default DoctorTestOrders;
+ export default withRouter(DoctorTestOrders);

@@ -2,7 +2,7 @@
  * @Author: dylanlawless
  * @Date:   2020-01-16T09:51:11+00:00
  * @Last modified by:   dylanlawless
- * @Last modified time: 2020-03-31T19:55:51+01:00
+ * @Last modified time: 2020-04-09T20:42:28+01:00
  */
  import React, {
      Component
@@ -400,7 +400,7 @@ import Moment from 'react-moment';
                                                  <td>Received</td>
                                                  <td>{decryptedResult}</td>
 
-                                                 <td><ResultsCollapse result={result}/></td>
+                                                 <td> <ResultsModal key={result._id} isDoctor={this.props.isDoctor} results={this.state.results} user={this.props.user.name} result={result} decryptedResult={this.state.decryptedResult} /></td>
 
 
                                              </tr>
