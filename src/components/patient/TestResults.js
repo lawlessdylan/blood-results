@@ -2,7 +2,7 @@
  * @Author: dylanlawless
  * @Date:   2020-01-16T09:51:11+00:00
  * @Last modified by:   dylanlawless
- * @Last modified time: 2020-04-10T16:06:00+01:00
+ * @Last modified time: 2020-04-10T16:08:49+01:00
  */
  import React, {
      Component
@@ -16,7 +16,6 @@
     import up from '../../images/up.png';
 import Moment from 'react-moment';
  import ResultsModal from './ResultsModal';
- import ResultsCollapse from './ResultsCollapse';
 
 
 
