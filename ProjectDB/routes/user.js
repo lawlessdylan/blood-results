@@ -2,7 +2,7 @@
  * @Author: dylanlawless
  * @Date:   2020-01-18T15:00:26+00:00
  * @Last modified by:   dylanlawless
- * @Last modified time: 2020-03-20T15:37:51+00:00
+ * @Last modified time: 2020-04-10T10:30:57+01:00
  */
 
 
@@ -87,7 +87,7 @@ router.route("/:id/results").get((req, res) => {
                 if (err) throw err;
 
                 res.json(userResults);
-            }).populate('doctor_id').populate('test_id').populate('user_id');
+            }).populate('doctor_id').populate('test_id').populate('patient_id');
         })
 
         .catch(err =>{
@@ -120,7 +120,7 @@ router.route("/doctor/:id/results").get((req, res) => {
                 if (err) throw err;
 
                 res.json(doctorResults);
-            }).populate('patient_id').populate('test_id').populate('user_id');
+            }).populate('patient_id').populate('test_id')
         })
 
         .catch(err =>{
