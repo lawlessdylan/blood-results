@@ -2,7 +2,7 @@
  * @Author: dylanlawless
  * @Date:   2020-01-17T16:07:41+00:00
  * @Last modified by:   dylanlawless
- * @Last modified time: 2020-04-10T15:27:58+01:00
+ * @Last modified time: 2020-04-10T16:26:07+01:00
  */
 
 
@@ -23,7 +23,7 @@
       -webkit-animation-name: intro-dash; /* Safari 4.0 - 8.0 */
       -webkit-animation-duration: 2s; /* Safari 4.0 - 8.0 */
       animation-name: intro-dash;
-      animation-duration: 0.2s;
+      animation-duration: 0.4s;
       box-shadow:   11px 11px 21px #d9d9d9,
              -11px -11px 21px #ffffff;
 
@@ -452,7 +452,7 @@ th{
       -webkit-animation-name: intro-dash; /* Safari 4.0 - 8.0 */
       -webkit-animation-duration: 2s; /* Safari 4.0 - 8.0 */
       animation-name: intro-dash;
-      animation-duration: 0.2s;
+      animation-duration: 0.4s;
 
 
 }
