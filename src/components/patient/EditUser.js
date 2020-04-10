@@ -2,7 +2,7 @@
  * @Author: dylanlawless
  * @Date:   2020-01-16T09:55:58+00:00
  * @Last modified by:   dylanlawless
- * @Last modified time: 2020-04-10T16:04:39+01:00
+ * @Last modified time: 2020-04-10T16:24:47+01:00
  */
  import React, {
      Component
@@ -190,7 +190,7 @@
    };
 
         goBack(){
-            this.props.history.push('/home')
+            this.props.history.push('/')
 
     }
 
