@@ -2,7 +2,7 @@
  * @Author: dylanlawless
  * @Date:   2020-01-16T19:18:54+00:00
  * @Last modified by:   dylanlawless
- * @Last modified time: 2020-04-09T18:33:44+01:00
+ * @Last modified time: 2020-04-10T12:36:52+01:00
  */
 
 
@@ -30,6 +30,21 @@
      font-weight: 600;
       will-change: top;
      position: relative;
+       -webkit-animation-name: intro-tests; /* Safari 4.0 - 8.0 */
+       -webkit-animation-duration: 2s; /* Safari 4.0 - 8.0 */
+       animation-name: intro-tests;
+       animation-duration: 0.4s;
+ }
+ .small-title-view {
+
+     color: #cf3c3c;
+     padding-top: 30px;
+     margin-left: 14px;
+     margin-bottom: 40px;
+     font-size: 28px;
+     font-weight: 600;
+      will-change: top;
+
        -webkit-animation-name: intro-tests; /* Safari 4.0 - 8.0 */
        -webkit-animation-duration: 2s; /* Safari 4.0 - 8.0 */
        animation-name: intro-tests;

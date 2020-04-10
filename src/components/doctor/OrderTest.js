@@ -2,7 +2,7 @@
  * @Author: dylanlawless
  * @Date:   2020-01-16T09:51:11+00:00
  * @Last modified by:   dylanlawless
- * @Last modified time: 2020-04-09T20:40:33+01:00
+ * @Last modified time: 2020-04-10T16:03:18+01:00
  */
  import React, {
      Component,
@@ -216,7 +216,7 @@
                                        Tests for:
                                        <ul className="test-list">
                                            {test.tests_for.map((tests_for) =>
-                                               <div key={tests_for._id}>
+                                               <div key={tests_for.tests_for}>
                                                    <li className="tests-for-li">{tests_for.tests_for}</li>
                                                </div>
                                            )}

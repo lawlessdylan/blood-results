@@ -2,7 +2,7 @@
  * @Author: dylanlawless
  * @Date:   2019-home01T09:31:29+01:00
  * @Last modified by:   dylanlawless
- * @Last modified time: 2020-04-08T17:58:38+01:00
+ * @Last modified time: 2020-04-10T15:29:17+01:00
  */
 
 body {
@@ -163,7 +163,7 @@ a.navbar-link:hover:after {
     color:  #cf3c3c;
     text-align: center;
     padding-bottom: 0px;
-    margin-top: 40px;
+    margin-top: 4   0px;
     margin-bottom: 20px;
 }
 .center-div {
@@ -294,6 +294,9 @@ color: #707070;
         position: fixed;
 
 
+}
+.right-view{
+    padding-left: 80px;
 }
 
 

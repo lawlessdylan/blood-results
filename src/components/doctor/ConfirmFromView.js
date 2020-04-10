@@ -2,13 +2,13 @@
  * @Author: dylanlawless
  * @Date:   2020-04-08T12:19:09+01:00
  * @Last modified by:   dylanlawless
- * @Last modified time: 2020-04-09T20:39:10+01:00
+ * @Last modified time: 2020-04-10T16:01:58+01:00
  */
  /**
   * @Author: dylanlawless
   * @Date:   2019-11-07T12:38:26+00:00
  * @Last modified by:   dylanlawless
- * @Last modified time: 2020-04-09T20:39:10+01:00
+ * @Last modified time: 2020-04-10T16:01:58+01:00
   */
 
 
@@ -77,7 +77,7 @@
           </Modal.Header>
           <Modal.Body>
 
-          <div>Are you sure you want to order this test for {props.patient.name}?</div>
+          <div>Are you sure you want to order this test for <span className="confirm-name">{props.patient.name}</span>?</div>
 
           </Modal.Body>
 

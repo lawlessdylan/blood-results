@@ -2,7 +2,7 @@
  * @Author: dylanlawless
  * @Date:   2020-01-15T09:52:42+00:00
  * @Last modified by:   dylanlawless
- * @Last modified time: 2020-04-09T20:42:56+01:00
+ * @Last modified time: 2020-04-10T16:06:14+01:00
  */
  import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -171,12 +171,12 @@ render(){
 
                 {(isDoctor) ? (
                     <>
-                    <Route path="/home"  component={DoctorTestOrders}>
-                        {isDoctor ? <DoctorTestOrders doctorName={doctorName} user={user} isDoctor={isDoctor} loggedIn={loggedIn} /> : <Redirect to="/home" />}
+                    <Route exact path="/"  component={DoctorTestOrders}>
+                        {isDoctor ? <DoctorTestOrders doctorName={doctorName} user={user} isDoctor={isDoctor} loggedIn={loggedIn} /> : <Redirect to="/login" />}
                     </Route>
 
                     <Route path="/orderTest"  component={OrderTest}>
-                        {isDoctor ? <OrderTest doctorName={doctorName} user={user} isDoctor={isDoctor} loggedIn={loggedIn} /> : <Redirect to="/home" />}
+                        {isDoctor ? <OrderTest doctorName={doctorName} user={user} isDoctor={isDoctor} loggedIn={loggedIn} /> : <Redirect to="/login" />}
                     </Route>
 
                     <Route path="/createPatient"  component={CreatePatient}>
@@ -204,7 +204,7 @@ render(){
                     <>
                     {(loggedIn) ? (
                         <>
-                        <Route path="/home"  component={TestResults}>
+                        <Route exact path="/"  component={TestResults}>
                               <TestResults isDoctor={isDoctor} loggedIn={loggedIn} user={user}/>
                         </Route>
 
@@ -214,7 +214,7 @@ render(){
                                       </Route>
                                       </>
                     ):(
-                        <Route path="/home"  component={Home}>
+                        <Route exact path="/"  component={Home}>
                               <Home isDoctor={isDoctor} loggedIn={loggedIn} user={user}/>
                         </Route>
                     )}

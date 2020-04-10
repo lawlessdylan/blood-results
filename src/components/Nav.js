@@ -2,7 +2,7 @@
  * @Author: dylanlawless
  * @Date:   2020-01-15T10:04:17+00:00
  * @Last modified by:   dylanlawless
- * @Last modified time: 2020-04-09T16:36:27+01:00
+ * @Last modified time: 2020-04-10T16:06:57+01:00
  */
  import React from 'react';
  import './App.css';
@@ -49,7 +49,7 @@
           componentDidUpdate(){
 
 
-              if(this.props.location.pathname === '/login' || this.props.location.pathname === '/home' && this.props.loggedIn === false
+              if(this.props.location.pathname === '/login' || this.props.location.pathname === '/' && this.props.loggedIn === false
               || this.props.location.pathname === '/signup' || this.props.location.pathname === '/signup2'
               || this.props.location.pathname === '/editUser'){
                    if(this.state.navClass !== '-home'){
@@ -93,7 +93,7 @@
 
                       {(isDoctor) ? (
                           <div>
-                           <NavLink className={"navbar-link"+ this.state.navClass} activeClassName={"chosen" + this.state.navClass} exact to="/home">Tests</NavLink>
+                           <NavLink className={"navbar-link"+ this.state.navClass} activeClassName={"chosen" + this.state.navClass} exact to="/">Tests</NavLink>
 
 
 
@@ -102,7 +102,7 @@
 
                                ) : (
                                    <div>
-                                    <NavLink className={"navbar-link"+ this.state.navClass} activeClassName={"chosen" + this.state.navClass} exact to="/home">Home</NavLink>
+                                    <NavLink className={"navbar-link"+ this.state.navClass} activeClassName={"chosen" + this.state.navClass} exact to="/">Home</NavLink>
                                    </div>
 
                                    )}
@@ -110,7 +110,7 @@
                       </div>
                   ) : (
                       <>
-                      <NavLink className={"navbar-link"+ this.state.navClass} activeClassName={"chosen" + this.state.navClass} exact to="/home">Home</NavLink>
+                      <NavLink className={"navbar-link"+ this.state.navClass} activeClassName={"chosen" + this.state.navClass} exact to="/">Home</NavLink>
 
                       </>
 

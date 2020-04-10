@@ -2,7 +2,7 @@
  * @Author: dylanlawless
  * @Date:   2020-01-17T16:07:41+00:00
  * @Last modified by:   dylanlawless
- * @Last modified time: 2020-04-09T18:42:13+01:00
+ * @Last modified time: 2020-04-10T15:27:58+01:00
  */
 
 
@@ -437,4 +437,31 @@ th{
     margin-top: -12px !important;
     padding: 30px 40px 30px 40px !important;
     border: 0px !important;
+}
+
+
+.view-patient{
+    padding-right: 20px;
+    padding-bottom: 30px;
+    border: 0px;
+    margin-left: 30px;
+    margin-top: -30px !important;
+    margin-bottom: -30px;
+
+    position: relative;
+      -webkit-animation-name: intro-dash; /* Safari 4.0 - 8.0 */
+      -webkit-animation-duration: 2s; /* Safari 4.0 - 8.0 */
+      animation-name: intro-dash;
+      animation-duration: 0.2s;
+
+
+}
+.sent-title{
+    margin-bottom: 0px !important;
+    padding-top: 0px !important;
+}
+.button-div{
+    width: 100% !important;
+    white-space: nowrap;
+    margin-right: 40px;
 }

@@ -2,13 +2,13 @@
  * @Author: dylanlawless
  * @Date:   2020-04-08T13:28:09+01:00
  * @Last modified by:   dylanlawless
- * @Last modified time: 2020-04-09T20:41:05+01:00
+ * @Last modified time: 2020-04-10T16:06:48+01:00
  */
  /**
   * @Author: dylanlawless
   * @Date:   2020-01-16T09:51:11+00:00
  * @Last modified by:   dylanlawless
- * @Last modified time: 2020-04-09T20:41:05+01:00
+ * @Last modified time: 2020-04-10T16:06:48+01:00
   */
   import React, {
       Component
@@ -118,50 +118,6 @@
                          console.log("New test order: " + newTestOrder);
                }
 
-
-               componentDidUpdate(){
-
-                   // if(this.state.newTestOrder === true){
-                   //
-                   //     axios.get(`http://localhost:5000/user/doctor/${this.props.user._id}/testOrders`)
-                   //     .then(response => {
-                   //
-                   //
-                   //       this.setState((state, props) => ({
-                   //           testOrders: response.data.reverse(),
-                   //
-                   //       }));
-                   //       this.setState((state, props) => ({
-                   //       users:
-                   //               this.state.testOrders.map((testOrder) => {
-                   //                    const encryptedPatientName = CryptoJS.AES.decrypt(testOrder.patient_id.name.toString(), testOrder.patient_id.password)
-                   //                    const decryptedPatientName = encryptedPatientName.toString(CryptoJS.enc.Utf8);
-                   //                    testOrder.patient_id.name = decryptedPatientName
-                   //
-                   //                    if(testOrder._id != null){
-                   //
-                   //                        return(
-                   //
-                   //                            {
-                   //                              name: decryptedPatientName
-                   //                            }
-                   //                    )}
-                   //
-                   //                })
-                   //
-                   //            }));
-                   //
-                   //     })
-                   //     .catch((error) => {
-                   //         console.log(error);
-                   //     })
-                   //
-                   // }
-               }
-
-     //           myCallback = (dataFromChild) => {
-     //     [...we will use the dataFromChild here...]
-     // }
 
 
       render() {

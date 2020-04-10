@@ -2,7 +2,7 @@
  * @Author: dylanlawless
  * @Date:   2020-01-16T21:40:36+00:00
  * @Last modified by:   dylanlawless
- * @Last modified time: 2020-04-09T12:29:50+01:00
+ * @Last modified time: 2020-04-10T13:26:29+01:00
  */
 
 
@@ -304,6 +304,11 @@ margin-top: -60px;
 
     padding: 0px 0px 0px 20px;
 }
+.view-body{
+
+    padding: 0px 0px 0px 20px;
+    margin-left: 70px;
+}
 .create-footer{
 
 }
@@ -312,9 +317,13 @@ margin-top: -60px;
     padding: 5px 10px 8px 0px !important;
     width: 100%;
     border: 0px !important;
+    overflow: visible !important;
+    width: 100% !important;
+    white-space: nowrap
 }
 .create-list{
     border: 0px;
+
 }
 .list-div{
     padding: 0px !important;
@@ -335,4 +344,8 @@ margin-top: -60px;
 .result-list-row{
     margin-top: -30px;
     margin-left: 15px;
+}
+.confirm-name{
+    color: #525252;
+    font-weight: 500;
 }

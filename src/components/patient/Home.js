@@ -2,7 +2,7 @@
  * @Author: dylanlawless
  * @Date:   2020-01-15T20:35:16+00:00
  * @Last modified by:   dylanlawless
- * @Last modified time: 2020-04-09T20:41:37+01:00
+ * @Last modified time: 2020-04-10T16:04:46+01:00
  */
 import React, {
     Component
@@ -98,7 +98,7 @@ class Home extends Component {
                                         Tests for:
                                         <ul className="test-list">
                                             {test.tests_for.map((tests_for) =>
-                                                <div key={tests_for._id}>
+                                                <div key={tests_for.tests_for}>
                                                     <li className="tests-for-li">{tests_for.tests_for}</li>
                                                 </div>
                                             )}
@@ -117,6 +117,12 @@ class Home extends Component {
                             </CardDeck>
                             </div>
 
+                            <div className="register-home-link">
+                            <Link className="register-home-link" to={'/signup'}>
+                                        Create an account to get started.
+                            </Link>
+
+                            </div>
 
                         <div className="col-12">
                         <div className="blob">

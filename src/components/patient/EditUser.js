@@ -2,7 +2,7 @@
  * @Author: dylanlawless
  * @Date:   2020-01-16T09:55:58+00:00
  * @Last modified by:   dylanlawless
- * @Last modified time: 2020-04-09T20:41:31+01:00
+ * @Last modified time: 2020-04-10T16:04:39+01:00
  */
  import React, {
      Component
@@ -108,7 +108,7 @@
 
         console.log(user);
         axios.defaults.headers.common['Authorization'] = localStorage.getItem('jwtToken')
-        axios.put(`http://localhost:5000/user/${this.props.user._id}`, user )
+        axios.put(process.env.REACT_APP_BACKEND +`/user/${this.props.user._id}`, user )
      .then(res => {
 
           console.log(res.data);

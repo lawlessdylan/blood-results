@@ -2,7 +2,7 @@
  * @Author: dylanlawless
  * @Date:   2020-01-16T09:51:11+00:00
  * @Last modified by:   dylanlawless
- * @Last modified time: 2020-04-09T20:40:20+01:00
+ * @Last modified time: 2020-04-10T16:03:05+01:00
  */
  import React, {
      Component
@@ -187,15 +187,15 @@
 
               handleChange() {
                   this.setState({
-                      searchString: this.refs.search.value,
-                      searchStringSent: this.refs.searchSent.value,
-                  });
+                      searchString: this.refs.search.value
+                      });
               }
 
               sortTableAZ(){
 
                        this.setState({
                            testOrders :  this.state.testOrders.slice().sort((a, b) => a.patient_id.name.localeCompare(b.patient_id.name)),
+                           sentResults :  this.state.sentResults.slice().sort((a, b) => a.patient_id.name.localeCompare(b.patient_id.name))
                        })
 
               }
@@ -203,6 +203,7 @@
 
                        this.setState({
                            testOrders :  this.state.testOrders.slice().sort((a, b) => a.patient_id.name.localeCompare(b.patient_id.name)).reverse(),
+                           sentResults :  this.state.sentResults.slice().sort((a, b) => a.patient_id.name.localeCompare(b.patient_id.name)).reverse()
                        })
               }
 
@@ -210,13 +211,15 @@
 
                        this.setState({
                           testOrders :  this.state.testOrders.slice().sort((a, b) => a.date.localeCompare(b.date)),
+                          sentResults :  this.state.sentResults.slice().sort((a, b) => a.date.localeCompare(b.date))
                        })
 
               }
               sortTableNewOld(){
 
                        this.setState({
-                          testOrders :  this.state.testOrders.slice().sort((a, b) => b.date.localeCompare(a.date))
+                          testOrders :  this.state.testOrders.slice().sort((a, b) => b.date.localeCompare(a.date)),
+                          sentResults :  this.state.sentResults.slice().sort((a, b) => b.date.localeCompare(a.date))
                        })
 
               }
@@ -317,7 +320,6 @@
 
             let testOrders = this.state.testOrders;
             let search = this.state.searchString.trim().toLowerCase();
-            let searchSent = this.state.searchStringSent.trim().toLowerCase();
 
             if (search.length > 0) {
                 testOrders = testOrders.filter(function(testOrder) {
@@ -326,10 +328,10 @@
                 }
 
                 let sentResults = this.state.sentResults;
-                if (searchSent.length > 0) {
+                if (search.length > 0) {
                     sentResults = sentResults.filter(function(result) {
 
-                            return result.patient_id.name.toLowerCase().match(searchSent);
+                            return result.patient_id.name.toLowerCase().match(search);
 
                         });
                     }
@@ -474,53 +476,7 @@
                 </Card>
 
 
-                <h4 className="small-title-tests">Sent Results</h4>
-                <Navbar>
-
-
-                    <Nav className="mr-auto results-nav">
-
-                 <input
-                        className="results-search"
-                        type="text"
-                        value={this.state.searchStringSent}
-                        ref="searchSent"
-                        onChange={this.handleChange}
-                        placeholder="Search by patient name"
-                    />
-
-                    </Nav>
-                    <Form className="results-nav-form" inline>
-
-                                                             <Form.Check  inline className="sortCheck" type="radio"
-                                                                name="phone_num"
-                                                                label="Most recent"
-                                                                onClick={this.sortSentTableNewOld}
-                                                                defaultChecked
-                                                              />
-
-                                                                <Form.Check inline className="sortCheck" type="radio"
-                                                                    name="phone_num"
-                                                                    label="Oldest"
-                                                                    onClick={this.sortSentTableOldNew}
-                                                                  />
-
-                                                             <Form.Check inline className="sortCheck" type="radio"
-                                                                name="phone_num"
-                                                               label='A - Z'
-                                                                onClick={this.sortSentTableAZ}
-                                                              />
-
-                                                            <Form.Check inline className="sortCheck" type="radio"
-                                                                name="phone_num"
-                                                                label='Z - A'
-
-                                                                onClick={this.sortSentTableZA}
-                                                              />
-
-                    </Form>
-
-                </Navbar>
+                <h4 className="small-title-tests sent-title">Sent Results</h4>
 
 
                 <Card className="results-dashboard">
@@ -534,16 +490,7 @@
 
                                    { this.state.showNew && (
                                        <>
-                                       <thead className="results-table-head">
-                                           <tr>
-                                             <th className="first-row">Test type</th>
-                                             <th>Patient name</th>
-                                             <th>Date</th>
-                                             <th>Status</th>
 
-                                              <th>Actions</th>
-                                           </tr>
-                                         </thead>
                                          <tbody className="results-table-body">
 
 

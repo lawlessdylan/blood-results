@@ -2,7 +2,7 @@
  * @Author: dylanlawless
  * @Date:   2020-01-16T19:18:54+00:00
  * @Last modified by:   dylanlawless
- * @Last modified time: 2020-04-09T18:30:41+01:00
+ * @Last modified time: 2020-04-10T15:44:40+01:00
  */
 
 .main-div    {
@@ -109,14 +109,25 @@
     opacity: 70%;
 }
 @keyframes blood-move {
-  0%   { transform: scale(0.28, 0.26)   translate(-700px, 150px) rotate(30deg);  }
-  35%  { transform: scale(0.30, 0.33) translate(100vw, 110vh) rotate(160deg); }
-  40%  { transform: scale(0.30, 0.33) translate(100vw, 110vh) rotate(160deg); }
-  75%  { transform: scale(0.37, 0.28) translate(15vw, 20vh) rotate(-30deg); }
-  80%  { transform: scale(0.37, 0.28) translate(15vw, 20vh) rotate(-30deg); }
-  100% { transform: scale(0.28, 0.26)   translate(-700px, 150px) rotate(30deg);}
+  0%   { transform: scale(0.24, 0.22)   translate(-700px, 150px) rotate(30deg);  }
+  35%  { transform: scale(0.26, 0.29) translate(100vw, 110vh) rotate(160deg); }
+  40%  { transform: scale(0.26, 0.29) translate(100vw, 110vh) rotate(160deg); }
+  75%  { transform: scale(0.33, 0.24) translate(15vw, 20vh) rotate(-30deg); }
+  80%  { transform: scale(0.33, 0.24) translate(15vw, 20vh) rotate(-30deg); }
+  100% { transform: scale(0.24, 0.22)   translate(-700px, 150px) rotate(30deg);}
 }
-
+.register-home-link{
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #fff;
+    text-align: center;
+    width: 100%;
+    padding-top: 30px;
+}
+.register-home-link{
+    text-decoration: none;
+    color: #fff !important;
+}
 /* @keyframes blood-move {
   0%   { transform: scale(0.32, 0.30)   translate(-700px, 0px) rotate(30deg);  filter:blur(6px) }
   35%  { transform: scale(0.37, 0.44) translate(100vw, 95vh) rotate(160deg);filter:blur(10px); }

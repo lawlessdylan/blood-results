@@ -2,7 +2,7 @@
  * @Author: dylanlawless
  * @Date:   2020-01-16T09:55:58+00:00
  * @Last modified by:   dylanlawless
- * @Last modified time: 2020-04-09T20:38:46+01:00
+ * @Last modified time: 2020-04-10T16:06:28+01:00
  */
  import React, {
      Component
@@ -134,7 +134,7 @@
                     .then(res => {
                         // save token in local storage
                 localStorage.setItem('jwtToken', res.data.token);
-                window.location = '/home'
+                window.location = '/'
 
             })
                 .catch((err) => {
@@ -180,7 +180,7 @@
                     // save token in local storage
                     localStorage.setItem('jwtToken', res.data.token);
 
-                    window.location = '/home'
+                    window.location = '/'
 
 
         })
